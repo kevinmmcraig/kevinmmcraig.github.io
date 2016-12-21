@@ -1,0 +1,33 @@
+* { box-sizing: border-box }
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+  position: relative;
+}
+
+.wrapper {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.pure-g [class*=pure-u] {
+  font-family: 'Source Code Pro', monospace;
+}
+
+.name--dev {
+  border: grey 1px solid;
+}
+
+.name--dev .pure-g {
+  border: orange 1px solid;
+}
+
+.name--dev .pure-g > div {
+  border: green 1px solid;
+}
