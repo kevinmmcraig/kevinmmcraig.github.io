@@ -16,8 +16,38 @@ body {
   transform: translateY(-50%);
 }
 
-.pure-g [class*=pure-u] {
+.name .pure-g {
+  text-align: center;
+  font-size: 4em;
+  line-height: .85em;
+  font-weight: 600;
+  color: #888;
+  cursor: default;
+
+  /* No select */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+     -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                not supported by any browser */
+}
+
+.name .pure-g [class*=pure-u] {
   font-family: 'Source Code Pro', monospace;
+}
+
+.name .pure-g:nth-child(5) [class*=pure-u] {
+  color: #222;
+  cursor: text;
+
+  /* Selecting is possible */
+  -webkit-touch-callout: text; /* iOS Safari */
+  -webkit-user-select: text; /* Chrome/Safari/Opera */
+     -moz-user-select: text; /* Firefox */
+      -ms-user-select: text; /* Internet Explorer/Edge */
+          user-select: text; /* Non-prefixed version, currently
+                                not supported by any browser */
 }
 
 .name--dev {
