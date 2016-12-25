@@ -1,3 +1,5 @@
+/* top-level rules */
+
 * { box-sizing: border-box }
 
 html, body {
@@ -7,6 +9,7 @@ html, body {
 
 body {
   position: relative;
+  overflow: hidden;
 }
 
 .wrapper {
@@ -16,8 +19,110 @@ body {
   transform: translateY(-50%);
 }
 
-/*
-.name .pure-g [class*=pure-u] {
+h1 {
   font-family: 'Cuprum', sans-serif;
+  text-align: center;
+  font-weight: 700;
+  font-style: italic;
+
+  font-size: 8em;
+  line-height: .7em;
+}
+
+h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1 a:hover span {
+  color: red;
+}
+
+h1 a:hover span:first-child {
+  text-decoration: overline;
+}
+
+h1 a:hover span:last-child {
+  text-decoration: underline;
+}
+
+a > span {
+  display: inline-block;
+  width: 100%;
+}
+
+/* colours */
+
+h1 {
+  color: #222;
+}
+
+h1 a:hover span {
+  color: red;
+}
+
+.dot {
+  color: red;
+}
+
+/* alternate colour scheme */
+/*
+body {
+  background-color: #222;
+}
+
+h1 {
+  color: white;
+}
+
+.dot {
+  color: red;
+}
+
+h1 a:hover span {
+  color: red;
 }
 */
+
+/* media queries */
+
+/* < 568px */
+@media screen and (max-width: 35.5em) {
+  h1 {
+    font-size: 6.5em;
+  }
+
+  h1 a > span:first-child {
+    text-align: left;
+  }
+
+  h1 a > span:last-child {
+    text-align: right;
+  }
+}
+
+/* only rotate text if not in landscape mode */
+@media screen and (max-width: 35.5em) and (orientation: portrait) {
+
+  h1 {
+    /* Safari */
+    -webkit-transform: rotate(45deg);
+
+    /* Firefox */
+    -moz-transform: rotate(45deg);
+
+    /* IE */
+    -ms-transform: rotate(45deg);
+
+    /* Opera */
+    -o-transform: rotate(45deg);
+  }
+}
+
+/* < 400px */
+@media screen and (max-width: 25em) {
+  h1 {
+    font-size: 5.2em;
+    line-height: .69;
+  }
+}
