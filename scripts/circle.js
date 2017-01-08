@@ -1,10 +1,10 @@
 
 //declarations of them global variables
-var numberofsel = 8;
+var numberofsel = 6;
 var size = 400;
 var quarter = size/4;
 var half = size/2;
-var threequart = 3*quarter;
+var threequart = 3*size/4;
 
 var sel_txt_array = ["Resume", "TheBlog", "About", "Contact", "Google!"];
 var sel_link_array = ["index.html", "theblog.html", "http://www.google.com", "http://www.google.com", "http://www.google.com"];
@@ -42,8 +42,8 @@ function initialize_me()
     } else {
         sel_divdim = $("#mainer").height();
     }
-    document.getElementById("squareit").style.width = 0.95 * sel_divdim + "px";
-    document.getElementById("squareit").style.height = 0.95 * sel_divdim + "px";
+    document.getElementById("squareit").style.width = 1 * sel_divdim + "px";
+    document.getElementById("squareit").style.height = 0.98 * sel_divdim + "px";
     clock_divdim = $("#analog_clock").width();
 
     //call functions to set up the selection menu

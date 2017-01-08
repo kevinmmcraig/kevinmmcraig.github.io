@@ -17,6 +17,9 @@ body {
 }
 
 #mainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   height: 100%;
   width: 100%;
@@ -29,16 +32,19 @@ body {
 
 #squareit
 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  margin: auto;
-  top: 4%;
+  height: 100%;
+  width: 100%;
 }
 
 .wrapper {
-  position: absolute;
-  width: 100%;
-  top: 35%;
-  transform: translateX(1%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-5%);
 }
 
 
@@ -47,9 +53,22 @@ h1 {
   text-align: center;
   font-weight: 700;
   font-style: italic;
+  width: 50%;
 
-  font-size: 3.8em;
+  font-size: 5.5em;
   line-height: .69em; /* mlib */
+
+  /* Safari */
+  -webkit-transform: rotate(45deg);
+
+  /* Firefox */
+  -moz-transform: rotate(45deg);
+
+  /* IE */
+  -ms-transform: rotate(45deg);
+
+  /* Opera */
+  -o-transform: rotate(45deg);
 }
 
 h1 a {
@@ -122,7 +141,8 @@ h1 a:hover span {
 .selection a:hover
 {
     box-shadow: #fdfafd 0 0 16px 10px;
-    background-color: #01b1dd;
+    background-color: #05555f;
+    color: white;
 }
 .selection a:active
 {
@@ -246,8 +266,11 @@ h1 a:hover span {
 
 /* < 568px */
 @media screen and (max-width: 35.5em) {
+  .wrapper {
+    transform: translateY(2%);
+  }
   h1 {
-    font-size: 2.5em;
+    font-size: 3.5em;
   }
 /*
   h1 a > span:first-child {
@@ -260,28 +283,13 @@ h1 a:hover span {
 */
 }
 
-/* only rotate text if not in landscape mode */
-@media screen and (max-width: 35.5em) and (orientation: portrait) {
-
-  h1 {
-    /* Safari */
-    -webkit-transform: rotate(45deg);
-
-    /* Firefox */
-    -moz-transform: rotate(45deg);
-
-    /* IE */
-    -ms-transform: rotate(45deg);
-
-    /* Opera */
-    -o-transform: rotate(45deg);
-  }
-}
-
 /* < 400px */
 @media screen and (max-width: 25em) {
+  .wrapper {
+    transform: translateY(10%);
+  }
   h1 {
-    font-size: 1.2em;
+    font-size: 2.2em;
   }
 }
 
