@@ -44,7 +44,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateY(-5%);
+  transform: translateY(-10%);
 }
 
 
@@ -55,7 +55,7 @@ h1 {
   font-style: italic;
   width: 50%;
 
-  font-size: 5.5em;
+  font-size: 5.9em;
   line-height: .69em; /* mlib */
 
   /* Safari */
@@ -155,8 +155,8 @@ h1 a:hover span {
 
     position: fixed;
 
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border: 2px lightgrey solid;
     border-radius: 10px;
 
@@ -168,6 +168,8 @@ h1 a:hover span {
     z-index: 1;
 
 }
+
+
 
 
 
@@ -264,6 +266,16 @@ h1 a:hover span {
 
 /* media queries */
 
+/* make the clock smaler for < 888px */
+@media screen and (max-width: 55.5em) {
+  #analog_clock
+  {
+
+    width: 100px;
+    height: 100px;
+  }
+}
+
 /* < 568px */
 @media screen and (max-width: 35.5em) {
   .wrapper {
@@ -290,6 +302,12 @@ h1 a:hover span {
   }
   h1 {
     font-size: 2.2em;
+  }
+  #analog_clock
+  {
+
+    width: 75px;
+    height: 75px;
   }
 }
 
