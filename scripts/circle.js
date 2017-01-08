@@ -1,12 +1,12 @@
 
 //declarations of them global variables
-var numberofsel = 5;
-var size = 200;
+var numberofsel = 8;
+var size = 500;
 var quarter = size/4;
 var half = size/2;
 var threequart = 3*quarter;
 
-var sel_txt_array = ["Resume", "TheBlog", "About", "Don't Click", "Google!"];
+var sel_txt_array = ["Resume", "TheBlog", "About", "Contact", "Google!"];
 var sel_link_array = ["index.html", "theblog.html", "http://www.google.com", "http://www.google.com", "http://www.google.com"];
 var clock_txt_array = ["12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"];
 
@@ -25,7 +25,7 @@ $(document).ready(function(){
 function initialize_me()
 {
     //declarations
-    var sel_divdim, clock_divdim, hour_temp;
+    var sel_divdim, sel_divdim, clock_divdim, w_temp, h_temp, hour_temp;
 
     var sel_points_x = [];
     var sel_points_y = [];
@@ -37,13 +37,14 @@ function initialize_me()
     windowHeight = $(window).height();
 
     //initializations for the menu and clock divs
-    sel_divdim = $("#mainer").width();
-    document.getElementById("mainer").style.height = 0.98 * sel_divdim + "px";
+    if (windowWidth < windowHeight) {
+        sel_divdim = $("#mainer").width();
+    } else {
+        sel_divdim = $("#mainer").height();
+    }
+    document.getElementById("squareit").style.width = 0.95 * sel_divdim + "px";
+    document.getElementById("squareit").style.height = 0.95 * sel_divdim + "px";
     clock_divdim = $("#analog_clock").width();
-    document.getElementById("analog_clock").style.height = 0.98 * clock_divdim + "px";
-
-    //set the clock to be at bottom of viewport
-    $("#analog_clock").css("top", (0.97 * windowHeight) - clock_divdim);
 
     //call functions to set up the selection menu
     calc_circ(sel_divdim, sel_points_x, sel_points_y, 1.25);
@@ -54,7 +55,7 @@ function initialize_me()
     realminute = t.getMinutes();
     hour_temp = t.getHours();
 
-    //call functions to set up clock 
+    //call functions to set up clock
     calc_circ(clock_divdim, clock_points_x, clock_points_y, 2);
     calc_clock_pos(clock_divdim, clock_points_x, clock_points_y, 2);
 
@@ -64,14 +65,14 @@ function initialize_me()
     run_hours(hour_temp, realminute);
     run_clock();
 
-
-    display_cool_icon();
+    // display_cool_icon();
 }
 
 
 // using size amount of distinct points to map out a circle in a div
 function calc_circ(divdim, points_x, points_y, scaling_factor)
 {
+
     divdim = divdim*scaling_factor;
     // increment = (length/2)/half (size amount of points, x going from 0 to max to 0 to -min to 0 again)
     var incr = divdim/size;
@@ -80,6 +81,7 @@ function calc_circ(divdim, points_x, points_y, scaling_factor)
     for (i = 0; i < quarter; i++) {
         points_x[i] = i*incr;
         temp = ((divdim*divdim)/16.0);
+
         temp -= i*incr*i*incr;
         if (temp <= 0) {
             points_y[i] = 0;
@@ -90,6 +92,7 @@ function calc_circ(divdim, points_x, points_y, scaling_factor)
     for (i = quarter; i < half; i++) {
         points_x[i] = points_x[quarter-1] - (i-quarter-1)*incr;
         temp = ((divdim*divdim)/16.0);
+
         temp -= ((points_x[i])*(points_x[i]));
         if (temp <= 0) {
             points_y[i] = 0;
@@ -131,16 +134,17 @@ function calc_sel_pos(divdim, sel_points_x, sel_points_y, scaling_factor)
             num = sel_txt_array.length - 1;
         }
         //make each selection an HTML element
-        $("<div></div>").attr("id","selection" + i).addClass("selection").appendTo("#mainer");
+        $("<div></div>").attr("id","selection" + i).addClass("selection").appendTo("#squareit");
 
 
-        selwidth = Math.floor(0.2*$("#mainer").innerWidth());
-        selheight = Math.floor(0.15*$("#mainer").innerHeight());
+        selwidth = Math.floor(0.2*$("#squareit").innerWidth());
+        selheight = Math.floor(0.15*$("#squareit").innerHeight());
         $(seltxt).width = selwidth;
         $(seltxt).height = selheight;
 
         if ( (angle_factor*i) <= 180 ) {
             ctr_array[i] = angle_to_index(divdim, i, angle_factor*i, sel_points_y, scaling_factor);
+
         } else {
             ctr_array[i] = size - ctr_array[numberofsel - i];
         }
@@ -172,10 +176,10 @@ function display_sels(num)
 {
     if (num < numberofsel) {
         if (num == 0) {
-            $("#selection" + num).css("z-index", "2").fadeIn(2000);
+            $("#selection" + num).css("z-index", "2").fadeIn(4000);
             setT_sel = setTimeout(function(){display_sels(num + 1)}, 1200);
         } else {
-            $("#selection" + num).css("z-index", num%2).fadeIn(750);
+            $("#selection" + num).css("z-index", num%2).fadeIn(1000);
             setT_sel = setTimeout(function(){display_sels(num + 1)}, 300);
         }
     }
@@ -191,8 +195,9 @@ function calc_clock_pos(divdim, clock_points_x, clock_points_y, scaling_factor)
     var cincr_width, clocktxt;
 
     //set up clock face
+
     $("<div></div>").attr("id", "clock_face").css({"width": divdim, "height": 0.99*divdim,
-        "border-radius": 0.5*divdim + "px"}).appendTo("#analog_clock");
+ "border-radius": 0.5*divdim + "px"}).appendTo("#analog_clock");
 
     for(i = 0; i < 12; i++) {
         clocktxt = "#clock_incr" + i;
@@ -206,17 +211,20 @@ function calc_clock_pos(divdim, clock_points_x, clock_points_y, scaling_factor)
         $(clocktxt).height = cincr_width;
 
         ifact = angle_to_index(divdim, i, angle_factor*i, clock_points_y, scaling_factor);
-        //$("<div></div>").attr("id", "output" + i).text(i + " x " +" y " + ifact).appendTo("#output_div");
+
+	$("<div></div>").attr("id", "output" + i).text(i + " x " +" y " + ifact).appendTo("#output_div");
 
         pos_x =  ((divdim/2.0 + clock_points_x[ifact]) - cincr_width/2.0);
         pos_y =  ((divdim/2.0 - clock_points_y[ifact]) - cincr_width/2.0);
 
+
         if (cincr_width > 20) {
+
             $(clocktxt).css("letter-spacing", "2px");
+
         }
-        $(clocktxt).css({"z-index": 12-i, "left": pos_x + "px", "top": pos_y + "px", 
-            "width": cincr_width + "px", "height": cincr_width + "px", "line-height": cincr_width + "px",
-            "border-radius": cincr_width + "px"});
+        $(clocktxt).css({"z-index": 12-i, "left": pos_x + "px", "top": pos_y + "px", "width": cincr_width + "px", "height": cincr_width + "px", "line-height": cincr_width + "px",
+ "border-radius": cincr_width + "px"});
     }
 }
 
@@ -291,7 +299,8 @@ function angle_to_index(divdim, index, angle, points_y, scaling_factor)
 
 
 //draws the hour, minute and second hands mainly functions to
-//check the seconds, also initiates the hour and minute run functions when a change occurs
+//check the seconds, also initiates the hour and minute
+//runs functions when a change occurs
 function run_clock()
 {
     var dimwidth = $("#analog_clock").width(), dimheight = $("#analog_clock").height();

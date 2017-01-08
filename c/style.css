@@ -3,21 +3,44 @@
 * { box-sizing: border-box }
 
 html, body {
-    margin: 0;
-    height: 100%;
+  margin: 0px;
+  height: 100%;
+  background-color: #222;
+  
 }
+
 
 body {
   position: relative;
   overflow: hidden;
+
+}
+
+#mainer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border: 2px lightgrey solid;
+  border-radius: 25px;
+  box-shadow: #97a7b0 0px 0px 10px 10px;
+
+
+}
+
+#squareit
+{
+  position: relative;
+  margin: auto;
+  top: 4%;
 }
 
 .wrapper {
-  width: 100%;
   position: absolute;
-  top: 20%;
-  transform: translateY(-50%);
+  width: 100%;
+  top: 35%;
+  transform: translateX(1%);
 }
+
 
 h1 {
   font-family: 'Cuprum', sans-serif;
@@ -25,7 +48,7 @@ h1 {
   font-weight: 700;
   font-style: italic;
 
-  font-size: 4em;
+  font-size: 3.8em;
   line-height: .69em; /* mlib */
 }
 
@@ -54,7 +77,7 @@ a > span {
 /* colours */
 
 h1 {
-  color: #444;
+  color: white;  //#444;
 }
 
 h1 a:hover span {
@@ -65,142 +88,6 @@ h1 a:hover span {
   color: red;
 }
 
-/* alternate colour scheme */
-/*
-body {
-  background-color: #222;
-}
-
-h1 {
-  color: white;
-}
-
-.dot {
-  color: red;
-}
-
-h1 a:hover span {
-  color: red;
-}
-*/
-
-/* media queries */
-
-/* < 568px */
-@media screen and (max-width: 35.5em) {
-  h1 {
-    font-size: 6.5em;
-  }
-
-  h1 a > span:first-child {
-    text-align: left;
-  }
-
-  h1 a > span:last-child {
-    text-align: right;
-  }
-}
-
-/* only rotate text if not in landscape mode */
-@media screen and (max-width: 35.5em) and (orientation: portrait) {
-
-  h1 {
-    /* Safari */
-    -webkit-transform: rotate(45deg);
-
-    /* Firefox */
-    -moz-transform: rotate(45deg);
-
-    /* IE */
-    -ms-transform: rotate(45deg);
-
-    /* Opera */
-    -o-transform: rotate(45deg);
-  }
-}
-
-/* < 400px */
-@media screen and (max-width: 25em) {
-  h1 {
-    font-size: 5.2em;
-  }
-}
-
-
-
-/*
-My old code
-*/
-
-#header
-{
-    font-family: 'Shonar Bangla', Geneva, Verdana, sans-serif;
-    font-size: 2.3em;
-    text-shadow: 0px 0px 10px #fdfefa;
-    letter-spacing: 1px;
-    margin: auto;
-    width: 70%;
-    padding: 15px 0px 5px 10px;
-    min-height: 50px;
-}
-
-
-
-#left_sel_nav
-
-{
-
-    float: left;
-
-    width: 18%;
-
-}
-
-
-
-#right_body
-
-{
-
-    float: left;
-
-    width: 78%;
-
-}
-
-
-
-#head_body
-
-{
-    font-family: 'Shonar Bangla', Geneva, Verdana, sans-serif;
-    font-size: 2.1em;
-    text-shadow: 0px 0px 10px #232312;
-    letter-spacing: 1px;
-    margin: auto;
-
-    width: 70%;
-
-    padding: 15px 0px 5px 10px;
-
-    height: 50px;
-    line-height: 50px;
-
-}
-
-#mainer
-{
-
-    position: relative;
-    border: 2px lightgrey solid;
-    border-radius: 20px;
-    box-shadow: #97a7b0 0px 0px 10px 10px;
-
-    margin: auto;
-    margin-bottom: 15px;
-    padding: 0;
-    width: 60%;
-}
 
 .selection
 {
@@ -208,6 +95,7 @@ My old code
 
     font-size: 0.75em;
     position: absolute;
+    width: 100%;
     border: 2px navy outset;
     border-radius: 10px;
     margin: auto;
@@ -221,20 +109,39 @@ My old code
     display: none;
 }
 
+.selection a
+{
+    display: block;
+    text-decoration: none;
+}
+.selection a:link visited
+{
+    -webkit-transition: all 2s ease 0;
+    transition: all 1s linear;
+}
+.selection a:hover
+{
+    box-shadow: #fdfafd 0 0 16px 10px;
+    background-color: #01b1dd;
+}
+.selection a:active
+{
+    color: #fdfefd;
+}
 
 
 #analog_clock
 {
 
     position: fixed;
+
+    width: 100px;
+    height: 100px;
     border: 2px lightgrey solid;
     border-radius: 10px;
 
-    left: 80%;
-
-    margin: auto;
-
-    width: 15%;
+    bottom: 5%;
+    right: 5%;
 
     background-color: #01f131;
 
@@ -250,6 +157,7 @@ My old code
 
     position: absolute;
 
+    width: 100%;
     margin: auto;
 
     padding: 0;
@@ -333,25 +241,112 @@ My old code
 }
 
 
-a
-{
-    display: block;
-    text-decoration: none;
+
+/* media queries */
+
+/* < 568px */
+@media screen and (max-width: 35.5em) {
+  h1 {
+    font-size: 2.5em;
+  }
+/*
+  h1 a > span:first-child {
+    text-align: left;
+  }
+
+  h1 a > span:last-child {
+    text-align: right;
+  }
+*/
 }
-a:link a:visited
-{
-    -webkit-transition: all 2s ease 0;
-    transition: all 1s linear;
+
+/* only rotate text if not in landscape mode */
+@media screen and (max-width: 35.5em) and (orientation: portrait) {
+
+  h1 {
+    /* Safari */
+    -webkit-transform: rotate(45deg);
+
+    /* Firefox */
+    -moz-transform: rotate(45deg);
+
+    /* IE */
+    -ms-transform: rotate(45deg);
+
+    /* Opera */
+    -o-transform: rotate(45deg);
+  }
 }
-a:hover
-{
-    box-shadow: #fdfafd 0 0 16px 10px;
-    background-color: #01b1dd;
+
+/* < 400px */
+@media screen and (max-width: 25em) {
+  h1 {
+    font-size: 1.2em;
+  }
 }
-a:active
+
+
+
+/*
+My old code
+
+
+#header
 {
-    color: #fdfefd;
+    font-family: 'Shonar Bangla', Geneva, Verdana, sans-serif;
+    font-size: 2.3em;
+    text-shadow: 0px 0px 10px #fdfefa;
+    letter-spacing: 1px;
+    margin: auto;
+    width: 70%;
+    padding: 15px 0px 5px 10px;
+    min-height: 50px;
 }
+
+
+
+#left_sel_nav
+
+{
+
+    float: left;
+
+    width: 18%;
+
+}
+
+
+
+#right_body
+
+{
+
+    float: left;
+
+    width: 78%;
+
+}
+
+
+
+#head_body
+
+{
+    font-family: 'Shonar Bangla', Geneva, Verdana, sans-serif;
+    font-size: 2.1em;
+    text-shadow: 0px 0px 10px #232312;
+    letter-spacing: 1px;
+    margin: auto;
+
+    width: 70%;
+
+    padding: 15px 0px 5px 10px;
+
+    height: 50px;
+    line-height: 50px;
+
+}
+
 
 #footer
 {
@@ -375,10 +370,12 @@ a:active
 
     height: 6px;
 
-    width: 10%;
+    width: 8%;
 
     z-index: 1;
 
 }
 
 
+
+*/
