@@ -7,7 +7,7 @@ var half = size/2;
 var threequart = 3*size/4;
 
 var sel_txt_array = ["Resume", "TheBlog", "About", "Contact", "Google!"];
-var sel_link_array = ["index.html", "theblog.html", "http://www.google.com", "http://www.google.com", "http://www.google.com"];
+var sel_link_array = ["resume.html", "theblog.html", "http://www.google.com", "http://www.google.com", "http://www.google.com"];
 var clock_txt_array = ["12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"];
 
 var setT_clock, setT_sel;
@@ -64,8 +64,6 @@ function initialize_me()
 
     run_hours(hour_temp, realminute);
     run_clock();
-
-    // display_cool_icon();
 }
 
 
@@ -399,37 +397,6 @@ function check_if_window_resized()
         initialize_me();
     }
 }
-
-
-
-
-function display_cool_icon()
-{
-    var angle,  width_diff, height_diff;
-    var length;
-
-    for (i = 0; i < 12; i++) {
-        $("#icon_segment" + i).remove();
-        $("<aside></aside>").attr("id","icon_segment" + i).addClass("cool_icon").appendTo("#header");
-
-        length = $("#icon_segment" + i).width();
-        angle = 30*i - 90;
-
-        //add negative signs to change it up!
-        width_diff = (1 - Math.cos(angle*Math.PI/180.0))*length/2;
-        height_diff = (Math.sin(angle*Math.PI/180.0))*length/2;
-        var angle_string = "rotate(" + angle + "deg)";
-        $("#icon_segment" + i).css({
-            "-webkit-transform": angle_string,
-            "-ms-transform": angle_string, "transform": angle_string,
-            "left": width_diff + "px", "top": height_diff + "px"
-        });
-    }
-}
-
-
-
-
 
 
 
