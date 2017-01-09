@@ -54,6 +54,21 @@ function initialize_me()
     run_clock();
 }
 
+//displays content
+function toggleContent(num)
+{
+    var content_num = "content" + num;
+    var content_display = document.getElementById("content" + num);
+    var display_option = content_display.style.display;
+
+    if (display_option == "block") {
+        content_display.style.display = "none";
+    } else {
+        content_display.style.display = "block";
+    }
+}
+    
+
 
 // using size amount of distinct points to map out a circle in a div
 function calc_circ(divdim, points_x, points_y, scaling_factor)
