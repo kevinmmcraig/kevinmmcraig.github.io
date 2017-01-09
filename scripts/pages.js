@@ -1,13 +1,10 @@
 
 //declarations of them global variables
-var numberofsel = 6;
 var size = 400;
 var quarter = size/4;
 var half = size/2;
 var threequart = 3*size/4;
 
-var sel_txt_array = ["Resume", "TheBlog", "About", "Contact", "Google!"];
-var sel_link_array = ["resume.html", "theblog.html", "http://www.google.com", "http://www.google.com", "http://www.google.com"];
 var clock_txt_array = ["12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"];
 
 var setT_clock, setT_sel;
@@ -36,23 +33,14 @@ function initialize_me()
     windowWidth = $(window).width();
     windowHeight = $(window).height();
 
-    //initializations for the menu and clock divs
-    if (windowWidth < windowHeight) {
-        sel_divdim = $("#mainer").width();
-    } else {
-        sel_divdim = $("#mainer").height();
-    }
-    document.getElementById("squareit").style.width = 1 * sel_divdim + "px";
-    document.getElementById("squareit").style.height = 0.98 * sel_divdim + "px";
+    //initializations for the clock div
     clock_divdim = $("#analog_clock").width();
 
-    //call functions to set up the selection menu
-    calc_circ(sel_divdim, sel_points_x, sel_points_y, 1.25);
-    calc_sel_pos(sel_divdim, sel_points_x, sel_points_y, 1.25);
-    display_sels(0);
+    //get the time
 
     var t = new Date();
     realminute = t.getMinutes();
+
     hour_temp = t.getHours();
 
     //call functions to set up clock
@@ -111,76 +99,6 @@ function calc_circ(divdim, points_x, points_y, scaling_factor)
     points_y[0] = divdim/4.0;
     points_y[quarter] = 0.0;
     points_y[threequart] = 0.0;
-}
-
-
-//calculates initial position of each selection
-function calc_sel_pos(divdim, sel_points_x, sel_points_y, scaling_factor)
-{
-    var angle_factor = Math.floor(360/numberofsel);
-    var newposition_x, newposition_y;
-
-    var selwidth, selheight, seltxt, num;
-    var ctr_array = [];
-
-    for(i = 0; i < numberofsel; i++) {
-        seltxt = "#selection" + i;
-
-        if (i < sel_txt_array.length) {
-            num = i;
-        } else {
-            num = sel_txt_array.length - 1;
-        }
-        //make each selection an HTML element
-        $("<div></div>").attr("id","selection" + i).addClass("selection").appendTo("#squareit");
-
-
-        selwidth = Math.floor(0.2*$("#squareit").innerWidth());
-        selheight = Math.floor(0.15*$("#squareit").innerHeight());
-        $(seltxt).width = selwidth;
-        $(seltxt).height = selheight;
-
-        if ( (angle_factor*i) <= 180 ) {
-            ctr_array[i] = angle_to_index(divdim, i, angle_factor*i, sel_points_y, scaling_factor);
-
-        } else {
-            ctr_array[i] = size - ctr_array[numberofsel - i];
-        }
-
-        newposition_x =  ((divdim/2.0 + sel_points_x[ctr_array[i]]) - selwidth/2.0);
-        newposition_y =  ((divdim/2.0 - sel_points_y[ctr_array[i]]) - selheight/2.0);
-        $(seltxt).css({"z-index": numberofsel-i, "left": newposition_x + "px", "top": newposition_y + "px",
-            "width": selwidth});
-
-        //make a link in each selection
-        $("<a></a>").attr("href", sel_link_array[num]).text(sel_txt_array[num]).appendTo(seltxt);
-    }
-}
-
-//removes each selection (useful for resizing purposes)
-function delete_sels(num)
-{
-    clearTimeout(setT_sel);
-    var seltxt = "#selection" + num;
-    if (num < numberofsel) {
-        $(seltxt).remove();
-        delete_sels(num + 1);
-    }
-}
-
-
-//display each selection in a timely manner
-function display_sels(num)
-{
-    if (num < numberofsel) {
-        if (num == 0) {
-            $("#selection" + num).css("z-index", "2").fadeIn(4000);
-            setT_sel = setTimeout(function(){display_sels(num + 1)}, 1200);
-        } else {
-            $("#selection" + num).css("z-index", num%2).fadeIn(1000);
-            setT_sel = setTimeout(function(){display_sels(num + 1)}, 300);
-        }
-    }
 }
 
 
@@ -391,8 +309,6 @@ function check_if_window_resized()
 
     if (wwidth != windowWidth || wheight != windowHeight) {
         clearTimeout(setT_clock);
-        delete_sels(0);
-
         $("#clock_face").remove();
         initialize_me();
     }
