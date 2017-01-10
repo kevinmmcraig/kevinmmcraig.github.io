@@ -1,14 +1,14 @@
 
 //declarations of them global variables
-var numberofsel = 8;
+var numberofsel = 9;
 var size = 400;
 var quarter = size/4;
 var half = size/2;
 var threequart = 3*size/4;
 
-var sel_txt_array = ["Resume", "TheBlog", "About", "Contact", "Google!"];
+var sel_txt_array = ["Resume", "Contact", "Just", "To", "Look", "Pretty", ":P", ". . .", "Google!"];
 
-var sel_link_array = ["resume.html", "theblog.html", "http://www.google.com", "contact.html", "http://www.google.com"];
+var sel_link_array = ["resume.html", "contact.html", "http://www.google.com"];
 var clock_txt_array = ["12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"];
 
 var setT_clock, setT_sel;

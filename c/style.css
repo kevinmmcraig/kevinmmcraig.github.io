@@ -4,7 +4,7 @@
 
 html, body {
   margin: 0;
-  height: 100%;
+  min-height: 100vh;
   color: lightgrey;
   background-color: #222;  
 }
@@ -22,8 +22,6 @@ body {
   border: 2px lightgrey solid;
   border-radius: 25px;
   box-shadow: #97a7b0 0px 0px 10px 10px;
-
-
 }
 
 .wrapper {
@@ -96,13 +94,16 @@ h1 a:hover span {
 
 
 .pure-u-3-4 {
-  transform: translateY(35%);
+  padding-top: 10em;
   float: left;
+  padding-left: 2%;
   width: 75%;
   min-height: 100vh;
 }
 .pure-u-1-6 {
   float: left;
+  padding-left: 2%;
+  padding-top: 5%;
   width: 16%;
   font-weight: 100;
   font-style: italic;
@@ -130,10 +131,10 @@ h3 {
 
 .pure-button {
   float: left;
-  transform: translate(-25%, 50%);
-  font-size: 2.5em;
-  padding-left: 20px;
-  padding-right: 20px;
+  transform: translate(-50%, 50%);
+  font-size: 1.5em;
+  padding-left: 4%;
+  padding-right: 4%;
   background-color: #01b1ff;
   border: 2px navy outset;
   border-radius: 10px;
@@ -145,8 +146,8 @@ h3 {
 
 .content {
   display: none;
-  margin-top: 5%;
   padding: 5%;
+  padding-top: 15%;
 }
 
 ul.dash {
@@ -284,6 +285,9 @@ ul.dash > li:before {
     transform: translateY(35%);
     width: 90%;
   }
+  .pure-u-3-4 {
+    padding-top: 0em;
+  }
 }
 
 /* < 568px */
@@ -291,6 +295,9 @@ ul.dash > li:before {
   .pure-u-11-12 {
     transform: translateY(25%);
     width: 90%;
+  }
+  .pure-u-3-4 {
+    padding-top: 1em;
   }
   .pure-u-1-1 {
     margin-top: 25%;
