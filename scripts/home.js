@@ -1,6 +1,6 @@
 
 //declarations of them global variables
-var numberofsel = 60;
+var numberofsel = 8;
 var size = 400;
 var quarter = size/4;
 var half = size/2;
@@ -8,7 +8,7 @@ var threequart = 3*size/4;
 
 var sel_txt_array = ["Resume", "TheBlog", "About", "Contact", "Google!"];
 
-var sel_link_array = ["resume.html", "theblog.html", "http://www.google.com", "http://www.google.com", "http://www.google.com"];
+var sel_link_array = ["resume.html", "theblog.html", "http://www.google.com", "contact.html", "http://www.google.com"];
 var clock_txt_array = ["12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"];
 
 var setT_clock, setT_sel;
@@ -112,7 +112,7 @@ function calc_circ(divdim, points_x, points_y, scaling_factor)
     points_x[threequart] = divdim/(-4.0);
     points_y[0] = divdim/4.0;
     points_y[quarter] = 0.0;
-    points_y[threequart] = 0.0;
+    points_y[threequart] = 0.0 + incr;
 }
 
 
@@ -281,7 +281,7 @@ function angle_to_index(divdim, index, angle, points_y, scaling_factor)
                 while (value_y < points_y[ctr]) {
                     ctr--;
                 }
-                return ctr;
+                return ctr + 1;
             } else { //quadrant 4
 
                 radians = (angle - 270)*Math.PI/180.0;
@@ -290,7 +290,7 @@ function angle_to_index(divdim, index, angle, points_y, scaling_factor)
                 while (value_y > points_y[ctr]) {
                     ctr++;
                 }
-                return ctr;
+                return ctr - 1;
             }
         }
     }
