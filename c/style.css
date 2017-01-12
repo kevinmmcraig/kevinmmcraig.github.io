@@ -100,14 +100,12 @@ h1 a:hover span {
   padding-top: 10em;
   float: left;
   padding-left: 2%;
-  width: 75%;
   min-height: 100vh;
 }
 .pure-u-1-6 {
   float: left;
   padding-left: 2%;
   padding-top: 5%;
-  width: 16%;
   font-weight: 100;
   font-style: italic;
   font-size: 1.2em;
@@ -152,6 +150,16 @@ h3 {
   padding: 5%;
   padding-top: 15%;
 }
+.bold {
+  float: left;  
+  font-weight: 500;
+}
+.ital {
+  font-style: italic;
+}
+.right_just {
+  float: right;
+}
 
 ul.dash {
     list-style: none;
@@ -164,7 +172,7 @@ ul.dash li {
 ul.dash > li:before {
     display: inline-block;
     float: left;
-    content: "----";
+    content: "---";
     font-weight: 700;
     width: 1em;
     letter-spacing: -2px;
@@ -239,7 +247,7 @@ ul.dash > li:before {
 @media screen and (max-width: 48em) {
   .pure-u-11-12 {
     transform: translateY(35%);
-    width: 90%;
+    padding-right: 10em;
   }
   .pure-u-3-4 {
     padding-top: 0em;
@@ -250,7 +258,7 @@ ul.dash > li:before {
 @media screen and (max-width: 35.5em) {
   .pure-u-11-12 {
     transform: translateY(25%);
-    width: 90%;
+    padding-right: 10em;
   }
   .pure-u-3-4 {
     padding-top: 1em;
