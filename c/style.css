@@ -147,8 +147,7 @@ h3 {
 
 .content {
   display: none;
-  padding: 5%;
-  padding-top: 15%;
+  padding-top: 50px;
 }
 .bold {
   float: left;  
@@ -162,21 +161,20 @@ h3 {
 }
 
 ul.dash {
-    list-style: none;
-    margin-left: 0;
-    padding-left: 1em;
+  list-style: none;
+  padding-left: 1em;
 }
 ul.dash li {
-    padding: 0.75em;
+  padding: 0.75em;
 }
 ul.dash > li:before {
-    display: inline-block;
-    float: left;
-    content: "---";
-    font-weight: 700;
-    width: 1em;
-    letter-spacing: -2px;
-    margin-left: -1.8em;
+  display: inline-block;
+  float: left;
+  content: "---";
+  font-weight: 700;
+  width: 1em;
+  letter-spacing: -2.5px;
+  margin-left: -1.8em;
 }
 
 
