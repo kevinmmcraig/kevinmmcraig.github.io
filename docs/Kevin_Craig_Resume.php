@@ -5,4 +5,3 @@ header('Content-Type: application/pdf');
 header('Content-Length: ' . filesize($filepath));
 header('Content-Disposition: attachment; filename=' . $filename);
 readfile($filepath);
-?>
