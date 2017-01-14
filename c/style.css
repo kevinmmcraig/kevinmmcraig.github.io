@@ -95,6 +95,12 @@ h1 a:hover span {
   color: red;
 }
 
+#resume_pdf {
+  width: 75%;
+  border: 2px white solid;
+  margin-top: 20em;
+}
+
 
 .pure-u-3-4 {
   padding-top: 10em;
