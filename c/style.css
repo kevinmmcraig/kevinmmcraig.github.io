@@ -28,8 +28,8 @@ body {
   float: left;
 }
 .pure-u-md-2-3 {
-  padding-top: 10em;
-  padding-left: 2%;
+  padding-top: 7em;
+  padding-left: 2.5em;
 }
 .pure-u-md-1-4 {
   padding-left: 2%;
@@ -54,6 +54,19 @@ body {
 .pure-button:hover {
   box-shadow: #fdfafd 0 0 16px 10px;
   background-color: #05555f;
+}
+
+.resume_pdf {
+  width: 20%;
+  text-align: center;
+  transform: translateY(-150%);
+}
+.resume_pdf a {
+  color: #34f5ac;
+  text-decoration: none;
+}
+.resume_pdf a:hover {
+  background-color: lightgrey;
 }
 
 .wrapper {
@@ -117,15 +130,6 @@ h1 a:hover span {
 
 .dot {
   color: red;
-}
-
-.resume_pdf {
-  text-align: center;
-}
-.resume_pdf a {
-  font-size: 1em;
-  color: #34f5ac;
-  text-decoration: none;
 }
 
 .heading {
@@ -252,6 +256,12 @@ ul.dash > li:before {
   h1 {
     font-size: 2.5em;
   }
+  .pure-u-md-2-3 {
+    padding-top: 5em;
+  }
+  .resume_pdf {
+    transform: translateY(-75%);
+  }
   .right_just {
     text-align: left;
   }
@@ -273,6 +283,12 @@ ul.dash > li:before {
 @media screen and (max-width: 25em) {
   h1 {
     font-size: 1.2em;
+  }
+  .pure-u-md-2-3 {
+    padding-top: 2em;
+  }
+  .resume_pdf {
+    transform: translateY(-25%);
   }
   .right_just {
     text-align: left;
