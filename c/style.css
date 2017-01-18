@@ -60,6 +60,7 @@ body {
   width: 20%;
   text-align: center;
   transform: translateY(-150%);
+  z-index: 2;
 }
 .resume_pdf a {
   color: #34f5ac;
@@ -138,13 +139,11 @@ h1 a:hover span {
   border: 1px lightgrey dotted;
 }
 .heading h2 {
-  width: 95%;
   padding: 0;
   font-weight: 150;
   font-size: 2.5em;
 }
 h3 {
-  margin-top: 15%;
   text-align: center;
   font-style: italic;
   font-size 0.8em;
@@ -152,12 +151,10 @@ h3 {
 
 .content {
   display: none;
+  width: 100%;
 }
 .bold {
   font-weight: 600;
-}
-.ital {
-  font-style: italic;
 }
 .right_just {
   text-align: right;
@@ -236,6 +233,13 @@ ul.dash > li:before {
     height: 2px;
     width: 45%;
     z-index: 3;
+}
+
+#first_bullet_point {
+  display: none;
+}
+#first_bullet_point_alt {
+  display: none;
 }
 
 

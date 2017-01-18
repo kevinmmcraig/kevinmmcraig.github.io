@@ -24,8 +24,8 @@
 
   <!-- JavaScript
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="scripts/pages.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="scripts/resume.js"></script>
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -60,36 +60,59 @@
         <div class="pure-g">
           <div class="pure-u-1-6"></div>
           <div class="resume_pdf pure-u-1-6">
-            <a href="docs/Kevin_Craig_Resume.pdf" target="blank">View my resume</a>
+            <a href="docs/Kevin%20Craig%20Resume%20Jan%2017%202017.pdf" target="blank">View my resume</a>
           </div>
           <div class="pure-u-1-12"></div>
           <div class="resume_pdf pure-u-1-6">
-            <a href="docs/Kevin\ Craig\ Resume\ Jan\ 17\ 2017.pdf" download>Download my resume</a>
+            <a href="docs/Kevin%20Craig%20Resume%20Jan%2017%202017.pdf" download>Download my resume</a>
           </div>
           <div class="pure-u-5-12"></div>
         </div>
         <div class="heading">
-          <button class="pure-button pure-button-primary" onclick="toggleContent(1)">+</button>
-          <h2>Skills & Admirable Traits</h2>
+          <button id="toggleContent1" class="pure-button pure-button-primary">+</button>
+          <h2>Technical Skills</h2>
         </div>
         <div id="content1" class="content">
+          <p class="backg">~</p>
+          <ul class="dash">
+            <li id="first_bullet_point">Programming languages worked with are listed on the right-hand column</li>
+            <li id="first_bullet_point_alt">Programming languages worked with are listed on the bottom of page</li>
+            <li>Experienced use of programming tools, platforms, and IDEs such as github, Eclipse and Visual Studio</li>
+            <li>Thorough knowledge of Linux and Windows desktop and server operating systems</li>
+            <li>Courses taken during school include:
+            <ul class="dash">
+              <li>PC Hardware & Software</li>
+              <li>Linux and Windows Administration</li>
+              <li>Web page Development</li>
+              <li>Data Communications</li>
+              <li>Scripting</li>
+              <li>OS Fundamentals</li>
+              <li>Databases</li>
+              <li>Programming</li>
+            </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="heading">
+          <button id="toggleContent2" class="pure-button pure-button-primary">+</button>
+          <h2>Core Competencies</h2>
+        </div>
+        <div id="content2" class="content">
           <p class="backg">~</p>
           <ul class="dash">
             <li>Strong communication, analytical, and problem solving skills</li>
             <li>Confident personality, motivated, with an honest, patient, and positive attitude</li>
             <li>Very quick learner, organized and accurate, with a desire to continuously learn</li>
             <li>Adept at multitasking and managing time effectively in any fast-paced environment</li>
-            <li>Proficient with C++, MySQL, scripting and web-oriented programming languages</li>
-            <li>Thorough knowledge of Linux and Windows desktop and server operating systems</li>
-            <li>Have a full G license with a clean record</li>
           </ul>
         </div>
 
         <div class="heading">
-          <button class="pure-button pure-button-primary" onclick="toggleContent(2)">+</button>
+          <button id="toggleContent3" class="pure-button pure-button-primary">+</button>
           <h2>Education</h2>
         </div>
-        <div id="content2" class="content">
+        <div id="content3" class="content">
           <p class="backg">~</p>
           <div class="pure-g">
             <div class="pure-u-md-3-5 pure-u-1-1">
@@ -98,39 +121,54 @@
             </div>
             <div class="right_just pure-u-md-2-5 pure-u-1-1">
               <span>Class of 2016</span><br />
-              <span class="ital">full-time</span>
             </div>
           </div>
           <ul class="dash">
-            <li>Overall GPA of 3.8. Took courses including: PC Hardware & Software, Linux and Windows Administration, Web page Development, Data Communications, and Scripting</li>
+            <li>Overall GPA of 3.8</li>
             <li>Learned the inner workings of computer networks and how to set up and maintain these systems</li>
             <li>Learned how to effectively utilize Windows and Linux based servers to run faster, focusing on security</li>
           </ul>
           <br />
           <div class="pure-g">
             <div class="pure-u-md-3-5 pure-u-1-1">
-              <span class="bold">Bachelor of Science in Physical Science</span><br />
+              <span class="bold">Bachelor of Science in Physics</span><br />
               <span>McMaster University, Hamilton ON</span>
             </div>
             <div class="right_just pure-u-md-2-5 pure-u-1-1">
               <span>Class of 2014</span><br />
-              <span class="ital">full-time</span>
             </div>
           </div>
           <ul class="dash">
             <li>Took courses to mathematically understand the nature of what we call reality</li>
             <li>Also learned underlying fundamental principles behind modern-day computers</li>
-            <li>Gathered experience in C++ and FORTRAN programming languages, and created several programs</li>
+            <li>Gained experience in C++, FORTRAN and LaTeX programming languages</li>
             <li>Learned how to manage my time and excel academically in a fast-paced environment</li>
           </ul>
         </div>
 
         <div class="heading">
-          <button class="pure-button pure-button-primary" onclick="toggleContent(3)">+</button>
+          <button id="toggleContent4" class="pure-button pure-button-primary">+</button>
           <h2>Work Experience</h2>
         </div>
-        <div id="content3" class="content">
+        <div id="content4" class="content">
           <p class="backg">~</p>
+          <div class="pure-g">
+            <div class="pure-u-md-1-2 pure-u-1-1">
+              <span class="bold">Computer Bench Technician</span><br />
+              <span>ResponseIT, Kingston ON</span>
+            </div>
+            <div class="right_just pure-u-md-1-2 pure-u-1-1">
+              <span>January 2016 – April 2016</span><br />
+            </div>
+          </div>
+          <ul class="dash">
+            <li>Troubleshot hardware and software of various types of desktop, server, and laptop computers</li>
+            <li>Created a server capable of installing different versions of the Windows operating system remotely</li>
+            <li>Went on several service calls to diagnose and fix urgent technical issues that clients were having</li>
+            <li>Exposed to other areas of technology including IP phone systems, virtualization (mainly with vSphere), remote accessing, hard drive cloning software, and determining evidence of water damage to electronics</li>
+            <li>Learned the business aspect to the information technology field</li>
+          </ul>
+          <br />
           <div class="pure-g">
             <div class="pure-u-md-1-2 pure-u-1-1">
               <span class="bold">Industrial Cleaning Technician</span><br />
@@ -138,31 +176,13 @@
             </div>
             <div class="right_just pure-u-md-1-2 pure-u-1-1">
               <span>Summer 2015,  June 2016 – January 2017</span><br />
-              <span class="ital">full-time</span>
             </div>
           </div>
           <ul class="dash">
-            <li>Cleaned kitchen exhaust and garbage disposal systems, underground parking lots, and City of Toronto park garbage bins using pressure washing equipment</li>
+            <li>Cleaned kitchen exhaust and garbage disposal systems, underground parking lots, and City of Toronto park facilities using pressure washing equipment</li>
             <li>Met with clients to specify scope of work, cleaned as much as possible in a time-constrained setting</li>
-            <li>Ensured the right equipment was loaded into the van and frequently drove it around busy streets</li>
+            <li>Organized the logistics of transporting equipment to the site, often driving through busy streets</li>
             <li>Always followed proper safety protocols to ensure the safety of myself and those around me</li>
-          </ul>
-          <br />
-          <div class="pure-g">
-            <div class="pure-u-md-1-2 pure-u-1-1">
-              <span class="bold">Co-op Computer Bench Technician</span><br />
-              <span>ResponseIT, Kingston ON</span>
-            </div>
-            <div class="right_just pure-u-md-1-2 pure-u-1-1">
-              <span>January 2016 – April 2016</span><br />
-              <span class="ital">part-time</span>
-            </div>
-          </div>
-          <ul class="dash">
-            <li>Repaired hardware and software of various types of desktop, server, and laptop computers</li>
-            <li>Created a server capable of remotely installing different versions of the Windows operating system</li>
-            <li>Also got familiarized with other areas of technology including IP phone systems, virtualization (mainly with vSphere), remote accessing, and determining evidence of water damage to electronics</li>
-            <li>Learned the business aspect to the information technology field</li>
           </ul>
           <br />
           <div class="pure-g">
@@ -172,7 +192,6 @@
             </div>
             <div class="right_just pure-u-md-1-2 pure-u-1-1">
               <span>September 2014 – December 2014</span><br />
-              <span class="ital">part-time</span>
             </div>
           </div>
           <ul class="dash">
@@ -184,35 +203,34 @@
           <br />
           <div class="pure-g">
             <div class="pure-u-md-1-2 pure-u-1-1">
-              <span class="bold">Bouncy Castle Laborer</span><br />
+              <span class="bold">Amusement Device Mechanic</span><br />
               <span>Checkers Fun Factory, Hamilton ON</span>
             </div>
             <div class="right_just pure-u-md-1-2 pure-u-1-1">
               <span>Summer 2013</span><br />
-              <span class="ital">part-time</span>
             </div>
           </div>
           <ul class="dash">
-            <li>With the help of one or two others, loaded company trucks with equipment</li>
-            <li>Assembled bouncy castles and other carnival equipment at the beginning of the requested time period, and took it all down and packed it up at the end</li>
+            <li>With the help of one or two others, loaded company trucks with equipment to bring to site</li>
+            <li>Assembled and dismantled bouncy castles and other carnival equipment within requested time period</li>
             <li>Ensured bouncy castles where securely in place with large metal stakes</li>
-            <li>Supervised the number of kids, always keeping in mind the acceptable safely limit</li>
+            <li>Supervised children, always enforcing the acceptable safety limit according to specified guidelines</li>
           </ul>
           <br />
           <div class="pure-g">
             <div class="pure-u-md-1-2 pure-u-1-1">
-              <span class="bold">Co-op Research Student</span><br />
+              <span class="bold">Research Student</span><br />
               <span>Xerox Research Centre of Canada, Mississauga ON</span>
             </div>
             <div class="right_just pure-u-md-1-2 pure-u-1-1">
               <span>Summer 2012</span><br />
-              <span class="ital">full-time</span>
             </div>
           </div>
           <ul class="dash">
             <li>Designed a computer program to control the automation of delivering a developer and toner mixture to the housing apparatus of a photocopier</li>
-            <li>Interfaced the apparatus to a controller that would input values to the LABVIEW programming environment where I would then calculate useful percentages</li>
-            <li>Worked independently and under pressure, testing certain properties of toner</li>
+            <li>Interfaced the apparatus to a controller that inputted values to the LABVIEW programming environment</li>
+            <li>Calculated useful percentages to test and improve certain properties of toner</li>
+            <li>Worked independently and under pressure</li>
           </ul>
           <br />
           <div class="pure-g">
@@ -221,8 +239,7 @@
               <span>Fourmark, Oakville ON</span>
             </div>
             <div class="right_just pure-u-md-1-2 pure-u-1-1">
-              <span>May 2011 – June 2011</span><br />
-              <span class="ital">full-time</span>
+              <span>Summer 2011</span><br />
             </div>
           </div>
           <ul class="dash">
@@ -237,25 +254,25 @@
             </div>
             <div class="right_just pure-u-md-1-2 pure-u-1-1">
               <span>September 2008 – November 2010</span><br />
-              <span class="ital">part-time</span>
             </div>
           </div>
           <ul class="dash">
             <li>Rang grocery items through the register and efficiently bagged them for the customer</li>
             <li>Handled cash, and was very friendly and helpful </li>
-            <li>Was punctual and often put in charge of the customer service desk</li>
+            <li>Often put in charge of the customer service desk</li>
           </ul>
           <br />
         </div>
 
         <div class="heading">
-          <button class="pure-button pure-button-primary" onclick="toggleContent(4)">+</button>
+          <button id="toggleContent5" class="pure-button pure-button-primary">+</button>
           <h2>Interests</h2>
         </div>
-        <div id="content4" class="content">
+        <div id="content5" class="content">
           <p class="backg">~</p>
           <ul class="dash">
             <li>Computers</li>
+            <li>Designing </li>
             <li>Playing drums</li>
             <li>Playing guitar</li>
             <li>Listening to music</li>
@@ -269,17 +286,20 @@
       <div class="right_col pure-u-md-1-4 pure-u-1-1">
         <p>The languages I am familiar with include:</p>
         <ul class="dash">
-          <li>HTML</li>
+          <li>HTML5</li>
           <li>CSS</li>
           <li>JavaScript</li>
           <li>PHP</li>
           <li>MySQL</li>
-          <li>FORTRAN</li>
           <li>Python</li>
           <li>C++</li>
           <li>Java</li>
+          <li>FORTRAN</li>
+          <li>LABVIEW</li>
+          <li>LaTeX</li>
+          <li>Always interested in learning more!</li>
         </ul>
-        <div id="analog_clock"></div>
+        <!-- disabled the clock <div id="analog_clock"></div> -->
       </div>
     </div>
   </div>

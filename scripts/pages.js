@@ -22,7 +22,7 @@ $(document).ready(function(){
 function initialize_me()
 {
     //declarations
-    var sel_divdim, sel_divdim, clock_divdim, w_temp, h_temp, hour_temp;
+    var sel_divdim, sel_divdim, clock_divdim, w_temp, h_temp, hour_temp, width_temp;
 
     var sel_points_x = [];
     var sel_points_y = [];
@@ -37,7 +37,6 @@ function initialize_me()
     clock_divdim = $("#analog_clock").width();
 
     //get the time
-
     var t = new Date();
     realminute = t.getMinutes();
 
@@ -53,22 +52,6 @@ function initialize_me()
     run_hours(hour_temp, realminute);
     run_clock();
 }
-
-//displays content
-function toggleContent(num)
-{
-    var content_num = "content" + num;
-    var content_display = document.getElementById("content" + num);
-    var display_option = content_display.style.display;
-
-    if (display_option == "block") {
-        content_display.style.display = "none";
-    } else {
-        content_display.style.display = "block";
-    }
-}
-    
-
 
 // using size amount of distinct points to map out a circle in a div
 function calc_circ(divdim, points_x, points_y, scaling_factor)
