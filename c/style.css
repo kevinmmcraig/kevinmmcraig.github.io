@@ -303,6 +303,9 @@ ul.dash > li:before {
   h1 {
     font-size: 1.2em;
   }
+  .photo_banner {
+    margin-top: -5.5em;
+  }
   .pure-u-md-2-3 {
     padding-top: 2em;
   }
