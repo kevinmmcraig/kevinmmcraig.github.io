@@ -56,7 +56,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateY(-8%);
+  transform: translateY(-9%);
 }
 
 
@@ -122,158 +122,94 @@ h1 a:hover span {
 
 .selection
 {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
-    font-size: 0.75em;
-    position: absolute;
-    width: 100%;
-    border: 2px navy outset;
-    border-radius: 10px;
-    margin: auto;
-
-    min-height: 60px;
-    line-height: 60px;
-    letter-spacing: 2px;
-    text-align: center;
-    background-color: #01b1ff;
-
-    display: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 0.75em;
+  position: absolute;
+  width: 100%;
+  border: 2px navy outset;
+  border-radius: 10px;
+  margin: auto;
+  min-height: 60px;
+  min-width: 5em;
+  line-height: 60px;
+  letter-spacing: 2px;
+  text-align: center;
+  background-color: #01b1ff;
+  display: none;
 }
 
 .selection a
 {
-    display: block;
-    text-decoration: none;
+  display: block;
+  text-decoration: none;
 }
 .selection a:link visited
 {
-    -webkit-transition: all 2s ease 0;
-    transition: all 1s linear;
+  -webkit-transition: all 2s ease 0;
+  transition: all 1s linear;
 }
 .selection a:hover
 {
-    box-shadow: #fdfafd 0 0 16px 10px;
-    background-color: #05555f;
-    color: white;
+  box-shadow: #fdfafd 0 0 16px 10px;
+  background-color: #05555f;
+  color: white;
 }
 .selection a:active
 {
-    color: #fdfefd;
+  color: #fdfefd;
 }
 
 
-#analog_clock
-{
-
-    position: fixed;
-
-    width: 150px;
-    height: 150px;
-    border: 2px lightgrey solid;
-    border-radius: 10px;
-
-    bottom: 5%;
-    right: 5%;
-
-    background-color: #01f131;
-
-    z-index: 1;
-
+#analog_clock {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  border: 2px lightgrey solid;
+  border-radius: 10px;
+  bottom: 5%;
+  right: 5%;
+  background-color: #01f131;
+  z-index: 1;
 }
-
-
-
-
-
-#clock_face
-
-{
-
-    position: absolute;
-
-    width: 100%;
-    margin: auto;
-
-    padding: 0;
-
-    background-color: #fafafd;
-
+#clock_face {
+  position: absolute;
+  width: 100%;
+  margin: auto;
+  padding: 0;
+  background-color: #fafafd;
 }
-
-
-.clock_incr
-
-{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
-    font-size: 0.75em;
-    position: absolute;
-    margin: auto;
-    text-align: center;
-    background-color: #01d14a;
-
+.clock_incr {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 0.75em;
+  position: absolute;
+  margin: auto;
+  text-align: center;
+  background-color: #01d14a;
 }
-
-
-
-#hour_hand
-
-{
-
-    position: absolute;
-
-    background-color: #97680f;
-
-    margin: auto;
-
-    height: 2px;
-
-    width: 25%;
-
-    z-index: 1;
-
+#hour_hand {
+  position: absolute;
+  background-color: #97680f;
+  margin: auto;
+  height: 2px;
+  width: 25%;
+  z-index: 1;
 }
-
-
-
-#minute_hand
-
-{
-
-    position: absolute;
-
-    background-color: #21a460;
-
-    margin: auto;
-
-    height: 2px;
-
-    width: 35%;
-
-    z-index: 2;
-
+#minute_hand {
+  position: absolute;
+  background-color: #21a460;
+  margin: auto;
+  height: 2px;
+  width: 35%;
+  z-index: 2;
 }
-
-
-
-#second_hand
-
-{
-
-    position: absolute;
-
-    background-color: #970be3;
-
-    margin: auto;
-
-    height: 2px;
-
-    width: 45%;
-
-    z-index: 3;
-
+#second_hand {
+  position: absolute;
+  background-color: #970be3;
+  margin: auto;
+  height: 2px;
+  width: 45%;
+  z-index: 3;
 }
-
 
 
 /* media queries */

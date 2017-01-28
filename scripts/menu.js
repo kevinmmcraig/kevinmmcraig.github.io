@@ -1,14 +1,14 @@
 
 //declarations of them global variables
-var numberofsel = 3;
-var size = 400;
+var numberofsel = 6;
+var size = 800;
 var quarter = size/4;
 var half = size/2;
 var threequart = 3*size/4;
 
-var sel_txt_array = ["Resume", "Contact", "About", "Projects", "Google!"];
+var sel_txt_array = ["These", "Couple", "Links", "Are", "Unique", "But", "The", "Next", "Ones", "Aren't", "Link"];
 
-var sel_link_array = ["resume.html", "contact.html", "about.html", "http://www.google.com"];
+var sel_link_array = ["index.html"];
 var clock_txt_array = ["12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"];
 
 var setT_clock, setT_sel;
@@ -16,7 +16,7 @@ var realminute, mkeepsake = 0;
 var windowWidth, windowHeight;
 
 //function that runs when page is finished loading
-$(document).ready(function(){
+$(document).ready(function() {
 
     initialize_me();
 
@@ -43,8 +43,10 @@ function initialize_me()
     } else {
         sel_divdim = $("#mainer").height();
     }
-    document.getElementById("squareit").style.width = 1 * sel_divdim + "px";
-    document.getElementById("squareit").style.height = 0.98 * sel_divdim + "px";
+    //some adjustments to the sel dimensions
+    sel_divdim = 0.5 * sel_divdim;
+    document.getElementById("squareit").style.width = sel_divdim + "px";
+    document.getElementById("squareit").style.height = 0.99 * sel_divdim + "px";
     clock_divdim = $("#analog_clock").width();
 
     //call functions to set up the selection menu
@@ -69,6 +71,23 @@ function initialize_me()
 }
 
 
+//function that grabs number from field and refreshes the selection menu
+function new_selection()
+{
+    var new_num = document.getElementById("new_sel_num").value;
+
+    if (new_num < 1 || new_num > 100) {
+        alert("Please enter in a number between 1 and 100!!!");
+    } else {
+        clearTimeout(setT_clock);
+        delete_sels(0);
+        $("#clock_face").remove();
+
+        numberofsel = new_num;
+        initialize_me();
+    }
+}
+
 // using size amount of distinct points to map out a circle in a div
 function calc_circ(divdim, points_x, points_y, scaling_factor)
 {
@@ -78,7 +97,7 @@ function calc_circ(divdim, points_x, points_y, scaling_factor)
     var incr = divdim/size;
     var temp;
 
-    for (i = 0; i < quarter; i++) {
+    for (i = 0; i < quarter+1; i++) {
         points_x[i] = i*incr;
         temp = ((divdim*divdim)/16.0);
 
@@ -89,8 +108,8 @@ function calc_circ(divdim, points_x, points_y, scaling_factor)
             points_y[i] = Math.sqrt( temp );
         }
     }
-    for (i = quarter; i < half; i++) {
-        points_x[i] = points_x[quarter-1] - (i-quarter-1)*incr;
+    for (i = quarter; i < half+1; i++) {
+        points_x[i] = points_x[quarter] - (i-quarter-1)*incr;
         temp = ((divdim*divdim)/16.0);
 
         temp -= ((points_x[i])*(points_x[i]));
@@ -103,7 +122,7 @@ function calc_circ(divdim, points_x, points_y, scaling_factor)
     points_x[half] = 0;
     points_y[half] = divdim/(-4.0);
 
-    for (i = half + 1; i < size; i++) {
+    for (i = half; i < size; i++) {
         points_x[i] = (-1.0)*points_x[size-i];
         points_y[i] = points_y[size-i];
     }
@@ -112,14 +131,14 @@ function calc_circ(divdim, points_x, points_y, scaling_factor)
     points_x[threequart] = divdim/(-4.0);
     points_y[0] = divdim/4.0;
     points_y[quarter] = 0.0;
-    points_y[threequart] = 0.0 + incr;
+    points_y[threequart] = 0.0;
 }
 
 
 //calculates initial position of each selection
 function calc_sel_pos(divdim, sel_points_x, sel_points_y, scaling_factor)
 {
-    var angle_factor = Math.floor(360/numberofsel);
+    var angle_factor = Math.floor(360.0/numberofsel);
     var newposition_x, newposition_y;
 
     var selwidth, selheight, seltxt, num;
@@ -155,7 +174,7 @@ function calc_sel_pos(divdim, sel_points_x, sel_points_y, scaling_factor)
             "width": selwidth});
 
         //make a link in each selection
-        $("<a></a>").attr("href", sel_link_array[num]).text(sel_txt_array[num]).appendTo(seltxt);
+        $("<a></a>").attr("href", sel_link_array[1]).text(sel_txt_array[num]).appendTo(seltxt);
     }
 }
 
@@ -176,11 +195,11 @@ function display_sels(num)
 {
     if (num < numberofsel) {
         if (num == 0) {
-            $("#selection" + num).css("z-index", "2").fadeIn(600);
-            setT_sel = setTimeout(function(){display_sels(num + 1)}, 300);
+            $("#selection" + num).css("z-index", "2").fadeIn(200);
+            setT_sel = setTimeout(function(){display_sels(num + 1)}, 50);
         } else {
-            $("#selection" + num).css("z-index", num%2).fadeIn(200);
-            setT_sel = setTimeout(function(){display_sels(num + 1)}, 300);
+            $("#selection" + num).css("z-index", num%2).fadeIn(100);
+            setT_sel = setTimeout(function(){display_sels(num + 1)}, 50);
         }
     }
 }
@@ -256,7 +275,7 @@ function angle_to_index(divdim, index, angle, points_y, scaling_factor)
 
         radians = (90 - angle)*Math.PI/180.0;
         value_y = divdim*Math.sin(radians)/4.0;
-        ctr = quarter+1;
+        ctr = quarter;
         while (value_y > points_y[ctr]) {
             ctr--;
         }
@@ -266,7 +285,7 @@ function angle_to_index(divdim, index, angle, points_y, scaling_factor)
 
             radians = (angle - 90)*Math.PI/180.0;
             value_y = divdim*Math.sin(radians)/(-4.0);
-            ctr = quarter+1;
+            ctr = quarter;
             while (value_y < points_y[ctr]) {
                 ctr++;
             }
@@ -281,7 +300,7 @@ function angle_to_index(divdim, index, angle, points_y, scaling_factor)
                 while (value_y < points_y[ctr]) {
                     ctr--;
                 }
-                return ctr + 1;
+                return ctr;
             } else { //quadrant 4
 
                 radians = (angle - 270)*Math.PI/180.0;
@@ -290,7 +309,7 @@ function angle_to_index(divdim, index, angle, points_y, scaling_factor)
                 while (value_y > points_y[ctr]) {
                     ctr++;
                 }
-                return ctr - 1;
+                return ctr;
             }
         }
     }
