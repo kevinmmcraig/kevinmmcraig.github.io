@@ -1,14 +1,14 @@
 
 //declarations of them global variables
-var numberofsel = 3;
+var numberofsel = 4;
 var size = 400;
 var quarter = size/4;
 var half = size/2;
 var threequart = 3*size/4;
 
-var sel_txt_array = ["Resume", "Contact", "About", "Projects", "Google!"];
+var sel_txt_array = ["Resume", "Contact", "About", "My Menu", "Google!"];
 
-var sel_link_array = ["resume.html", "contact.html", "about.html", "http://www.google.com"];
+var sel_link_array = ["resume.html", "contact.html", "about.html", "menu.html", "http://www.google.com"];
 var clock_txt_array = ["12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"];
 
 var setT_clock, setT_sel;
@@ -119,7 +119,7 @@ function calc_circ(divdim, points_x, points_y, scaling_factor)
 //calculates initial position of each selection
 function calc_sel_pos(divdim, sel_points_x, sel_points_y, scaling_factor)
 {
-    var angle_factor = Math.floor(360/numberofsel);
+    var angle_factor = 360/numberofsel;
     var newposition_x, newposition_y;
 
     var selwidth, selheight, seltxt, num;
@@ -142,12 +142,7 @@ function calc_sel_pos(divdim, sel_points_x, sel_points_y, scaling_factor)
         $(seltxt).width = selwidth;
         $(seltxt).height = selheight;
 
-        if ( (angle_factor*i) <= 180 ) {
-            ctr_array[i] = angle_to_index(divdim, i, angle_factor*i, sel_points_y, scaling_factor);
-
-        } else {
-            ctr_array[i] = size - ctr_array[numberofsel - i];
-        }
+        ctr_array[i] = angle_to_index(divdim, i, angle_factor*i, sel_points_y, scaling_factor);
 
         newposition_x =  ((divdim/2.0 + sel_points_x[ctr_array[i]]) - selwidth/2.0);
         newposition_y =  ((divdim/2.0 - sel_points_y[ctr_array[i]]) - selheight/2.0);
@@ -177,10 +172,10 @@ function display_sels(num)
     if (num < numberofsel) {
         if (num == 0) {
             $("#selection" + num).css("z-index", "2").fadeIn(600);
-            setT_sel = setTimeout(function(){display_sels(num + 1)}, 300);
+            setT_sel = setTimeout(function(){display_sels(num + 1)}, 500);
         } else {
-            $("#selection" + num).css("z-index", num%2).fadeIn(200);
-            setT_sel = setTimeout(function(){display_sels(num + 1)}, 300);
+            $("#selection" + num).css("z-index", num%2).fadeIn(300);
+            setT_sel = setTimeout(function(){display_sels(num + 1)}, 400);
         }
     }
 }

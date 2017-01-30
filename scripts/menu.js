@@ -8,7 +8,7 @@ var threequart = 3*size/4;
 
 var sel_txt_array = ["These", "Couple", "Links", "Are", "Unique", "But", "The", "Next", "Ones", "Aren't", "Link"];
 
-var sel_link_array = ["index.html"];
+var sel_link_array = ["menu.html"];
 var clock_txt_array = ["12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"];
 
 var setT_clock, setT_sel;
@@ -18,6 +18,14 @@ var windowWidth, windowHeight;
 //function that runs when page is finished loading
 $(document).ready(function() {
 
+    $("#new_sel_num").keypress(function (e) {
+        var key = e.which;
+        if(key == 13)  // the enter key code
+        {
+            new_selection();  
+        }
+    });
+
     initialize_me();
 
 })
@@ -26,7 +34,7 @@ $(document).ready(function() {
 function initialize_me()
 {
     //declarations
-    var sel_divdim, clock_divdim, w_temp, h_temp, hour_temp;
+    var sel_divdim, clock_divdim, w_temp, h_temp, hour_temp, size_temp;
 
     var sel_points_x = [];
     var sel_points_y = [];
@@ -38,20 +46,30 @@ function initialize_me()
     windowHeight = $(window).height();
 
     //initializations for the menu and clock divs
-    if (windowWidth < windowHeight) {
-        sel_divdim = $("#mainer").width();
-    } else {
-        sel_divdim = $("#mainer").height();
-    }
+
+    clock_divdim = $("#analog_clock").width();
+    sel_divdim = $("#mainer").width();
+
     //some adjustments to the sel dimensions
     sel_divdim = 0.5 * sel_divdim;
-    document.getElementById("squareit").style.width = sel_divdim + "px";
-    document.getElementById("squareit").style.height = 0.99 * sel_divdim + "px";
-    clock_divdim = $("#analog_clock").width();
+
+    //set the div around the selection menu links (making sure window isn't too small)
+    if (windowWidth <= 400) {
+        size_temp = Math.floor(windowWidth/10.0);
+        document.getElementById("squareit").style.width = size_temp + sel_divdim + "px";
+        document.getElementById("squareit").style.height = size_temp + sel_divdim + "px";
+    } else if (windowWidth > 400 && windowWidth <= 568) {
+        size_temp = Math.floor(windowWidth/15.0);
+        document.getElementById("squareit").style.width = size_temp + sel_divdim + "px";
+        document.getElementById("squareit").style.height = size_temp + sel_divdim + "px";
+    } else {
+        document.getElementById("squareit").style.width = sel_divdim + "px";
+        document.getElementById("squareit").style.height = sel_divdim + "px";
+    }
 
     //call functions to set up the selection menu
-    calc_circ(sel_divdim, sel_points_x, sel_points_y, 1.25);
-    calc_sel_pos(sel_divdim, sel_points_x, sel_points_y, 1.25);
+    calc_circ(sel_divdim, sel_points_x, sel_points_y, 1.15);
+    calc_sel_pos(sel_divdim, sel_points_x, sel_points_y, 1.15);
     display_sels(0);
 
     var t = new Date();
@@ -76,8 +94,8 @@ function new_selection()
 {
     var new_num = document.getElementById("new_sel_num").value;
 
-    if (new_num < 1 || new_num > 100) {
-        alert("Please enter in a number between 1 and 100!!!");
+    if (new_num < 1 || new_num > 50) {
+        alert("Please enter in a number between 1 and 50!!!");
     } else {
         clearTimeout(setT_clock);
         delete_sels(0);
@@ -138,7 +156,7 @@ function calc_circ(divdim, points_x, points_y, scaling_factor)
 //calculates initial position of each selection
 function calc_sel_pos(divdim, sel_points_x, sel_points_y, scaling_factor)
 {
-    var angle_factor = Math.floor(360.0/numberofsel);
+    var angle_factor = 360.0/numberofsel;
     var newposition_x, newposition_y;
 
     var selwidth, selheight, seltxt, num;
@@ -161,12 +179,7 @@ function calc_sel_pos(divdim, sel_points_x, sel_points_y, scaling_factor)
         $(seltxt).width = selwidth;
         $(seltxt).height = selheight;
 
-        if ( (angle_factor*i) <= 180 ) {
-            ctr_array[i] = angle_to_index(divdim, i, angle_factor*i, sel_points_y, scaling_factor);
-
-        } else {
-            ctr_array[i] = size - ctr_array[numberofsel - i];
-        }
+        ctr_array[i] = angle_to_index(divdim, i, angle_factor*i, sel_points_y, scaling_factor);
 
         newposition_x =  ((divdim/2.0 + sel_points_x[ctr_array[i]]) - selwidth/2.0);
         newposition_y =  ((divdim/2.0 - sel_points_y[ctr_array[i]]) - selheight/2.0);
@@ -174,7 +187,7 @@ function calc_sel_pos(divdim, sel_points_x, sel_points_y, scaling_factor)
             "width": selwidth});
 
         //make a link in each selection
-        $("<a></a>").attr("href", sel_link_array[1]).text(sel_txt_array[num]).appendTo(seltxt);
+        $("<a></a>").attr("href", sel_link_array[0]).text(sel_txt_array[num]).appendTo(seltxt);
     }
 }
 
@@ -300,7 +313,7 @@ function angle_to_index(divdim, index, angle, points_y, scaling_factor)
                 while (value_y < points_y[ctr]) {
                     ctr--;
                 }
-                return ctr;
+                return ctr - 1;
             } else { //quadrant 4
 
                 radians = (angle - 270)*Math.PI/180.0;
@@ -309,7 +322,7 @@ function angle_to_index(divdim, index, angle, points_y, scaling_factor)
                 while (value_y > points_y[ctr]) {
                     ctr++;
                 }
-                return ctr;
+                return ctr + 1;
             }
         }
     }

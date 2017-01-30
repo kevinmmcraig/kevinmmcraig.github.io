@@ -32,7 +32,7 @@ body {
   padding-left: 2.5em;
 }
 .pure-u-2-3 {
-  padding-top: 7em;
+  padding-top: 8em;
   padding-left: 2.5em;
 }
 .pure-u-5-6 {
@@ -348,6 +348,13 @@ ul.dash > li:before {
   .right_just {
     text-align: left;
   }
+  #squareit {
+    height: 5.6em;
+    width: 5.6em;
+  }
+  #new_sel_num {
+    width: 2em;
+  }
   #analog_clock {
     display: none;
   }
@@ -371,6 +378,9 @@ ul.dash > li:before {
     margin-top: -5.5em;
   }
   .pure-u-md-2-3 {
+    padding-top: 2em;
+  }
+  .pure-u-2-3 {
     padding-top: 2em;
   }
   .resume_pdf {
