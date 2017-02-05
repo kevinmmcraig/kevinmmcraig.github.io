@@ -1,7 +1,8 @@
 
 //declarations of them global variables
 var numberofsel = 6;
-var size = 800;
+var MAXnumberofsel = 500;
+var size = 120000;
 var quarter = size/4;
 var half = size/2;
 var threequart = 3*size/4;
@@ -55,11 +56,11 @@ function initialize_me()
 
     //set the div around the selection menu links (making sure window isn't too small)
     if (windowWidth <= 400) {
-        size_temp = Math.floor(windowWidth/10.0);
+        size_temp = Math.floor(windowWidth/12.0);
         document.getElementById("squareit").style.width = size_temp + sel_divdim + "px";
         document.getElementById("squareit").style.height = size_temp + sel_divdim + "px";
     } else if (windowWidth > 400 && windowWidth <= 568) {
-        size_temp = Math.floor(windowWidth/15.0);
+        size_temp = Math.floor(windowWidth/18.0);
         document.getElementById("squareit").style.width = size_temp + sel_divdim + "px";
         document.getElementById("squareit").style.height = size_temp + sel_divdim + "px";
     } else {
@@ -94,8 +95,8 @@ function new_selection()
 {
     var new_num = document.getElementById("new_sel_num").value;
 
-    if (new_num < 1 || new_num > 50) {
-        alert("Please enter in a number between 1 and 50!!!");
+    if (new_num < 1 || new_num > MAXnumberofsel) {
+        alert("Please enter in a number between 1 and " + MAXnumberofsel + "!!!");
     } else {
         clearTimeout(setT_clock);
         delete_sels(0);
@@ -104,52 +105,6 @@ function new_selection()
         numberofsel = new_num;
         initialize_me();
     }
-}
-
-// using size amount of distinct points to map out a circle in a div
-function calc_circ(divdim, points_x, points_y, scaling_factor)
-{
-
-    divdim = divdim*scaling_factor;
-    // increment = (length/2)/half (size amount of points, x going from 0 to max to 0 to -min to 0 again)
-    var incr = divdim/size;
-    var temp;
-
-    for (i = 0; i < quarter+1; i++) {
-        points_x[i] = i*incr;
-        temp = ((divdim*divdim)/16.0);
-
-        temp -= i*incr*i*incr;
-        if (temp <= 0) {
-            points_y[i] = 0;
-        } else {
-            points_y[i] = Math.sqrt( temp );
-        }
-    }
-    for (i = quarter; i < half+1; i++) {
-        points_x[i] = points_x[quarter] - (i-quarter-1)*incr;
-        temp = ((divdim*divdim)/16.0);
-
-        temp -= ((points_x[i])*(points_x[i]));
-        if (temp <= 0) {
-            points_y[i] = 0;
-        } else {
-            points_y[i] = (-1.0)*Math.sqrt( temp );
-        }
-    }
-    points_x[half] = 0;
-    points_y[half] = divdim/(-4.0);
-
-    for (i = half; i < size; i++) {
-        points_x[i] = (-1.0)*points_x[size-i];
-        points_y[i] = points_y[size-i];
-    }
-    points_x[0] = 0;
-    points_x[quarter] = divdim/4.0;
-    points_x[threequart] = divdim/(-4.0);
-    points_y[0] = divdim/4.0;
-    points_y[quarter] = 0.0;
-    points_y[threequart] = 0.0;
 }
 
 
@@ -206,13 +161,22 @@ function delete_sels(num)
 //display each selection in a timely manner
 function display_sels(num)
 {
+    var time_var;
+
+    //time it takes is proportional to the amount of links
+    if (numberofsel < 25) {
+        time_var = 200;
+    } else {
+        time_var = (MAXnumberofsel - numberofsel)/10;
+    }
+
     if (num < numberofsel) {
         if (num == 0) {
-            $("#selection" + num).css("z-index", "2").fadeIn(200);
-            setT_sel = setTimeout(function(){display_sels(num + 1)}, 50);
+            $("#selection" + num).fadeIn(200);
+            setT_sel = setTimeout(function(){display_sels(num + 1)}, time_var*2);
         } else {
-            $("#selection" + num).css("z-index", num%2).fadeIn(100);
-            setT_sel = setTimeout(function(){display_sels(num + 1)}, 50);
+            $("#selection" + num).fadeIn(100);
+            setT_sel = setTimeout(function(){display_sels(num + 1)}, time_var);
         }
     }
 }
@@ -228,7 +192,7 @@ function calc_clock_pos(divdim, clock_points_x, clock_points_y, scaling_factor)
 
     //set up clock face
 
-    $("<div></div>").attr("id", "clock_face").css({"width": divdim, "height": 0.99*divdim,
+    $("<div></div>").attr("id", "clock_face").css({"width": divdim, "height": divdim,
  "border-radius": 0.5*divdim + "px"}).appendTo("#analog_clock");
 
     for(i = 0; i < 12; i++) {
@@ -261,32 +225,79 @@ function calc_clock_pos(divdim, clock_points_x, clock_points_y, scaling_factor)
 }
 
 
+// using size amount of distinct points to map out a circle in a div
+function calc_circ(divdim, points_x, points_y, scaling_factor)
+{
+
+    divdim = divdim*scaling_factor;
+    // increment = (length/2)/half (size amount of points, x going from 0 to max to 0 to -min to 0 again)
+    var incr = divdim/size;
+    var temp;
+
+    for (i = 0; i < quarter+1; i++) {
+        points_x[i] = i*incr;
+        temp = ((divdim*divdim)/16.0);
+
+        temp -= i*incr*i*incr;
+        if (temp <= 0) {
+            points_y[i] = 0;
+        } else {
+            points_y[i] = Math.sqrt( temp );
+        }
+    }
+    for (i = quarter; i < half+1; i++) {
+        points_x[i] = points_x[quarter] - (i-quarter-1)*incr;
+        temp = ((divdim*divdim)/16.0);
+
+        temp -= ((points_x[i])*(points_x[i]));
+        if (temp <= 0) {
+            points_y[i] = 0;
+        } else {
+            points_y[i] = (-1.0)*Math.sqrt( temp );
+        }
+    }
+    points_x[half] = 0.0;
+    points_y[half] = divdim/(-4.0);
+
+    for (i = half; i < size; i++) {
+        points_x[i] = (-1.0)*points_x[size-i];
+        points_y[i] = points_y[size-i];
+    }
+    points_x[0] = 0.0;
+    points_x[quarter] = divdim/4.0;
+    points_x[threequart] = divdim/(-4.0);
+    points_y[0] = divdim/4.0;
+    points_y[quarter] = 0.0;
+    points_y[threequart] = 0.0;
+}
+
+
 //calculate the proper index given an angle
 function angle_to_index(divdim, index, angle, points_y, scaling_factor)
 {
     var ctr, value_y, radians; //need to convert angle to rads
     divdim = divdim*scaling_factor;
 
-    if (angle == 0) {
-        ctr = 0;
+    if (angle == 0.0) {
+        ctr = 0.0;
         return ctr;
     }
-    if (angle == 90) {
+    if (angle == 90.0) {
         ctr = quarter;
         return ctr;
     }
-    if (angle == 180) {
+    if (angle == 180.0) {
         ctr = half;
         return ctr;
     }
-    if (angle == 270) {
+    if (angle == 270.0) {
         ctr = threequart;
         return ctr;
     }
 
-    if (angle < 90) { //quadrant 1
+    if (angle < 90.0) { //quadrant 1
 
-        radians = (90 - angle)*Math.PI/180.0;
+        radians = (90.0 - angle)*Math.PI/180.0;
         value_y = divdim*Math.sin(radians)/4.0;
         ctr = quarter;
         while (value_y > points_y[ctr]) {
@@ -294,9 +305,9 @@ function angle_to_index(divdim, index, angle, points_y, scaling_factor)
         }
         return ctr;
     } else {
-        if (angle < 180) { //quadrant 2
+        if (angle < 180.0) { //quadrant 2
 
-            radians = (angle - 90)*Math.PI/180.0;
+            radians = (angle - 90.0)*Math.PI/180.0;
             value_y = divdim*Math.sin(radians)/(-4.0);
             ctr = quarter;
             while (value_y < points_y[ctr]) {
@@ -304,35 +315,32 @@ function angle_to_index(divdim, index, angle, points_y, scaling_factor)
             }
             return ctr;
         } else {
-            //quadrant 3 or 4, so to preserve symmetry, do nothing here
-            if (angle < 270) { //quadrant 3
+            if (angle < 270.0) { //quadrant 3
 
-                radians = (90 - (angle - 180))*Math.PI/180.0;
+                radians = (90.0 - (angle - 180.0))*Math.PI/180.0;
                 value_y = divdim*Math.sin(radians)/(-4.0);
                 ctr = threequart;
                 while (value_y < points_y[ctr]) {
                     ctr--;
                 }
-                return ctr - 1;
+                return ctr;
             } else { //quadrant 4
 
-                radians = (angle - 270)*Math.PI/180.0;
+                radians = (angle - 270.0)*Math.PI/180.0;
                 value_y = divdim*Math.sin(radians)/4.0;
                 ctr = threequart;
                 while (value_y > points_y[ctr]) {
                     ctr++;
                 }
-                return ctr + 1;
+                return ctr;
             }
         }
     }
 }
 
 
-
-//draws the hour, minute and second hands mainly functions to
-//check the seconds, also initiates the hour and minute
-//runs functions when a change occurs
+//draws the hour, minute and second hands mainly functions to check the seconds, also initiates the hour and minute functions
+//will initiate a function to refresh everything when a change in the window size occurs
 function run_clock()
 {
     var dimwidth = $("#analog_clock").width(), dimheight = $("#analog_clock").height();
@@ -357,7 +365,7 @@ function run_clock()
 
     length = $("#second_hand").width();
     $("#second_hand").remove();
-    angle = 6*sec + 90;
+    angle = 6.0*sec + 90.0;
     width_diff = 0.25*dimwidth + wdisplace(angle, length);
     height_diff = 0.5*dimheight - hdisplace(angle, length);
     var angle_string = "rotate(" + angle + "deg)";
@@ -376,7 +384,7 @@ function run_minutes(min)
 
     len = $("#minute_hand").width();
     $("#minute_hand").remove();
-    ang = 6*min + 90;
+    ang = 6.0*min + 90.0;
     wdiff = 0.3*dimw + wdisplace(ang, len);
     hdiff = 0.5*dimh - hdisplace(ang, len);
     var angle_string = "rotate(" + ang + "deg)";
@@ -393,7 +401,7 @@ function run_hours(hour, min)
     min_adj = Math.floor(min / 5);
     len = $("#hour_hand").width();
     $("#hour_hand").remove();
-    ang = 30*hour + 90 + 2.5*min_adj;
+    ang = 30.0*hour + 90.0 + 2.5*min_adj;
     wdiff = 0.35*dimw + wdisplace(ang, len);
     hdiff = 0.5*dimh - hdisplace(ang, len);
     var angle_string = "rotate(" + ang + "deg)";
@@ -404,16 +412,14 @@ function run_hours(hour, min)
 
 function wdisplace(angle, length) {
     var diff1 = angle*Math.PI/180.0;
-    var diff2 = 1 - Math.cos(diff1)*length/2;
+    var diff2 = 1.0 - Math.cos(diff1)*length/2.0;
     return diff2;
 }
 function hdisplace(angle, length) {
     var diff1 = angle*Math.PI/180.0;
-    var diff2 = Math.sin(diff1)*length/2;
+    var diff2 = Math.sin(diff1)*length/2.0;
     return diff2;
 }
-
-
 
 //checks if window size was changed
 function check_if_window_resized()

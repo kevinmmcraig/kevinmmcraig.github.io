@@ -110,7 +110,7 @@ function calc_clock_pos(divdim, clock_points_x, clock_points_y, scaling_factor)
 
     //set up clock face
 
-    $("<div></div>").attr("id", "clock_face").css({"width": divdim, "height": 0.99*divdim,
+    $("<div></div>").attr("id", "clock_face").css({"width": divdim, "height": divdim,
  "border-radius": 0.5*divdim + "px"}).appendTo("#analog_clock");
 
     for(i = 0; i < 12; i++) {
@@ -211,10 +211,8 @@ function angle_to_index(divdim, index, angle, points_y, scaling_factor)
 }
 
 
-
-//draws the hour, minute and second hands mainly functions to
-//check the seconds, also initiates the hour and minute
-//runs functions when a change occurs
+//draws the hour, minute and second hands mainly functions to check the seconds, also initiates the hour and minute functions
+//will initiate a function to refresh everything when a change in the window size occurs
 function run_clock()
 {
     var dimwidth = $("#analog_clock").width(), dimheight = $("#analog_clock").height();
@@ -239,7 +237,7 @@ function run_clock()
 
     length = $("#second_hand").width();
     $("#second_hand").remove();
-    angle = 6*sec + 90;
+    angle = 6.0*sec + 90.0;
     width_diff = 0.25*dimwidth + wdisplace(angle, length);
     height_diff = 0.5*dimheight - hdisplace(angle, length);
     var angle_string = "rotate(" + angle + "deg)";
@@ -258,7 +256,7 @@ function run_minutes(min)
 
     len = $("#minute_hand").width();
     $("#minute_hand").remove();
-    ang = 6*min + 90;
+    ang = 6.0*min + 90.0;
     wdiff = 0.3*dimw + wdisplace(ang, len);
     hdiff = 0.5*dimh - hdisplace(ang, len);
     var angle_string = "rotate(" + ang + "deg)";
@@ -275,7 +273,7 @@ function run_hours(hour, min)
     min_adj = Math.floor(min / 5);
     len = $("#hour_hand").width();
     $("#hour_hand").remove();
-    ang = 30*hour + 90 + 2.5*min_adj;
+    ang = 30.0*hour + 90.0 + 2.5*min_adj;
     wdiff = 0.35*dimw + wdisplace(ang, len);
     hdiff = 0.5*dimh - hdisplace(ang, len);
     var angle_string = "rotate(" + ang + "deg)";
@@ -286,16 +284,14 @@ function run_hours(hour, min)
 
 function wdisplace(angle, length) {
     var diff1 = angle*Math.PI/180.0;
-    var diff2 = 1 - Math.cos(diff1)*length/2;
+    var diff2 = 1.0 - Math.cos(diff1)*length/2.0;
     return diff2;
 }
 function hdisplace(angle, length) {
     var diff1 = angle*Math.PI/180.0;
-    var diff2 = Math.sin(diff1)*length/2;
+    var diff2 = Math.sin(diff1)*length/2.0;
     return diff2;
 }
-
-
 
 //checks if window size was changed
 function check_if_window_resized()
