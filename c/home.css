@@ -2,18 +2,17 @@
 
 /*
 
-  Colour Scheme: Triad
-  primary: #79bd9a (light blue)
-  secondary: red (red)
-  tertiary: #cff09e (yellow)
-
-  alternates
-  #3b8686 (darker blue)
-  #a8dba8 (darker yellow)
+  Colour Scheme (from lighter colour to darker)
+  #cff09e (yellow-green)
+  #a8dba8 (light green)
+  #79bd9a (aqua)
+  #3b8686 (blue green)
+  #0b486b (teal)
 
   others
   lightgrey for text colour
-  #0b486b dark background colour
+  #222222 dark background colour
+  #0b486b for accent
 
 */
 
@@ -99,7 +98,8 @@ h1 a {
 }
 
 h1 a:hover span {
-  color: red;
+  color: #3b8686;
+  text-shadow: -1px -1px #a8dba8;
 }
 
 h1 a:hover span:first-child {
@@ -120,11 +120,11 @@ h1 {
 }
 
 h1 a:hover span {
-  color: red;
+  color: #3b8686;
 }
 
 .dot {
-  color: red;
+  color: #0b486b;
 }
 
 
@@ -150,7 +150,7 @@ h1 a:hover span {
   color: #cff09e  ;
 }
 .selection a:link visited {
-  color: grey;
+  color: #cff09e;
 }
 .selection:hover {
   border: 2px lightgrey outset;
@@ -187,6 +187,7 @@ h1 a:hover span {
   position: absolute;
   margin: auto;
   text-align: center;
+  color: #222222;
   background-color: #3b8686;
 }
 #hour_hand {

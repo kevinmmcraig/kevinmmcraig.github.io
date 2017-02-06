@@ -120,18 +120,26 @@ function calc_sel_pos(divdim, sel_points_x, sel_points_y, scaling_factor)
     for(i = 0; i < numberofsel; i++) {
         seltxt = "#selection" + i;
 
-        if (i < sel_txt_array.length) {
-            num = i;
-        } else {
-            num = sel_txt_array.length - 1;
-        }
         //make each selection an HTML element
         $("<div></div>").attr("id","selection" + i).addClass("selection").appendTo("#squareit");
 
-
-        selwidth = Math.floor(0.2*$("#squareit").innerWidth());
-        selheight = Math.floor(0.15*$("#squareit").innerHeight());
+        //calculate where to put the selection in the div
+        selwidth = Math.floor(0.25*$("#squareit").width());
+        if (selwidth < 110) {
+            selwidth = 110;
+        }
+        if (selwidth > 200) {
+            selwidth = 200;
+        }
         $(seltxt).width = selwidth;
+
+        selheight = Math.floor(0.05*$("#squareit").height());
+        if (selheight < 40) {
+            selheight = 40;
+        }
+        if (selheight > 100) {
+            selheight = 100;
+        }
         $(seltxt).height = selheight;
 
         ctr_array[i] = angle_to_index(divdim, i, angle_factor*i, sel_points_y, scaling_factor);
@@ -139,10 +147,15 @@ function calc_sel_pos(divdim, sel_points_x, sel_points_y, scaling_factor)
         newposition_x =  ((divdim/2.0 + sel_points_x[ctr_array[i]]) - selwidth/2.0);
         newposition_y =  ((divdim/2.0 - sel_points_y[ctr_array[i]]) - selheight/2.0);
         $(seltxt).css({"z-index": numberofsel-i, "left": newposition_x + "px", "top": newposition_y + "px",
-            "width": selwidth});
+            "width": selwidth, "height": 1.5*selheight});
 
-        //make a link in each selection
-        $("<a></a>").attr("href", sel_link_array[0]).text(sel_txt_array[num]).appendTo(seltxt);
+        //make a link in each selection with the global arrays
+        if (i < sel_txt_array.length) {
+            num = i;
+        } else {
+            num = sel_txt_array.length - 1;
+        }
+        $("<a></a>").attr("href", sel_link_array[num]).text(sel_txt_array[num]).appendTo(seltxt);
     }
 }
 
@@ -277,23 +290,6 @@ function angle_to_index(divdim, index, angle, points_y, scaling_factor)
 {
     var ctr, value_y, radians; //need to convert angle to rads
     divdim = divdim*scaling_factor;
-
-    if (angle == 0.0) {
-        ctr = 0.0;
-        return ctr;
-    }
-    if (angle == 90.0) {
-        ctr = quarter;
-        return ctr;
-    }
-    if (angle == 180.0) {
-        ctr = half;
-        return ctr;
-    }
-    if (angle == 270.0) {
-        ctr = threequart;
-        return ctr;
-    }
 
     if (angle < 90.0) { //quadrant 1
 

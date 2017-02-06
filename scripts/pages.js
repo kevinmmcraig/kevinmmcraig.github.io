@@ -33,6 +33,18 @@ function initialize_me()
     windowWidth = $(window).width();
     windowHeight = $(window).height();
 
+    //to set the correct link for my email, so it doesn't go off the page at smaller screen sizes
+    var text = document.getElementById("email_link");
+    var alt_text = document.getElementById("email_link_alt");
+
+    if (windowWidth < 526) {
+        text.style.display = "none";
+        alt_text.style.display = "block";
+    } else {
+        text.style.display = "block";
+        alt_text.style.display = "none";
+    }
+
     //initializations for the clock div
     clock_divdim = $("#analog_clock").width();
 

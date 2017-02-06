@@ -1,19 +1,19 @@
 /* css file for every linked page from home page on personal website */
 
 /*
+/*
 
-  Colour Scheme: Triad
-  primary: #01b1ff (light blue)
-  secondary: #ff1a3d (red)
-  tertiary: #ccc415 (yellow)
-
-  alternates
-  #1381b2 (darker blue)
-  #b2ab0a (darker yellow)
+  Colour Scheme (from lighter colour to darker)
+  #cff09e (yellow-green)
+  #a8dba8 (light green)
+  #79bd9a (aqua)
+  #3b8686 (blue green)
+  #0b486b (teal)
 
   others
   lightgrey for text colour
   #222222 dark background colour
+  red for accent
 
 */
 
@@ -58,7 +58,7 @@ h1 {
   text-align: left;
   font-style: italic;
   width: 5%;
-
+  color: lightgrey;
   font-size: 3em;
   line-height: .69em; /* mlib */
 
@@ -79,7 +79,8 @@ h1 a {
   text-decoration: none;
 }
 h1 a:hover span {
-  color: red;
+  color: #3b8686;
+  text-shadow: -1px -1px #a8dba8;
 }
 h1 a:hover span:first-child {
   text-decoration: overline;
@@ -87,22 +88,28 @@ h1 a:hover span:first-child {
 h1 a:hover span:last-child {
   text-decoration: underline;
 }
+h1 a:hover span:first-child.dot {
+  text-decoration: none;
+}
+h1 a:hover span:last-child.dot {
+  text-decoration: none;
+}
 a > span {
   display: inline-block;
   width: 100%;
-}
-h1 {
-  color: lightgrey;
-}
-h1 a:hover span {
-  color: #ff1a3d;
 }
 
 h2 {
   font-size: 1.4em;
 }
-h2.tab {
-  padding-bottom: 1.5em;
+h2 a {
+  font-size: 1.2em;
+  color: #3b8686;
+  text-decoration: none;
+}
+h2 a:hover {
+  color: #79bd9a;
+  text-shadow: -1px -1px #a8dba8;
 }
 
 h3 {
@@ -115,7 +122,7 @@ h3 {
 /* general classes to be used anywhere */
 
 .dot {
-  color: #ff1a3d;
+  color: #0b486b;
 }
 .bold {
   font-size: 120%;
@@ -159,11 +166,11 @@ h3 {
   z-index: 2;
 }
 .resume_pdf a {
-  color: #ccc415;
+  color: #cff09e;
   text-decoration: underline;
 }
 .resume_pdf a:hover {
-  color: #b2ab0a;
+  color: #a8dba8;
 }
 
 .content {
@@ -177,13 +184,14 @@ h3 {
   font-size: 1.5em;
   padding-left: 4%;
   padding-right: 4%;
-  background-color: #01b1ff;
-  border: 2px #1381b2 outset;
+  color: #cff09e;
+  background-color: #79bd9a;
+  border: 2px #3b8686 outset;
   border-radius: 10px;
 }
 .expand_button:hover {
   box-shadow: lightgrey 0 0 16px 10px;
-  background-color: #1381b2;
+  background-color: #3b8686;
   border: 2px lightgrey outset;
 }
 .right_just {
@@ -251,6 +259,16 @@ ul.courses_list {
   padding-left: 2.5em;
   padding-bottom: 4em;
 }
+h2.tab {
+  padding-bottom: 1.5em;
+}
+
+#email_link {
+  display: none;
+}
+#email_link_alt {
+  display: none;
+}
 
 
 /* deals exclusively with menu page */
@@ -280,37 +298,37 @@ ul.courses_list {
 }
 
 .selection {
-  font-size: 0.75em;
+  font-size: 1.75em;
   position: absolute;
-  width: 100%;
-  border: 2px #1381b2 outset;
+  border: 2px #3b8686 outset;
   border-radius: 10px;
   margin: auto;
-  min-height: 60px;
-  min-width: 5.56em;
-  line-height: 60px;
   letter-spacing: 2px;
   text-align: center;
-  background-color: #01b1ff;
+  background-color: #79bd9a;
   display: none;
 }
 
 .selection a {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
   text-decoration: none;
+  color: #cff09e  ;
 }
 .selection a:link visited {
-  -webkit-transition: all 2s ease 0;
-  transition: all 1s linear;
+  color: #cff09e;
 }
-.selection a:hover {
+.selection:hover {
   border: 2px lightgrey outset;
   border-radius: 10px;
   box-shadow: lightgrey 0 0 16px 10px;
-  background-color: #1381b2;
+  background-color: #3b8686;
   color: lightgrey;
 }
-.selection a:active {
+.selection:active {
   color: lightgrey;
 }
 
@@ -325,7 +343,7 @@ ul.courses_list {
   border-radius: 10px;
   bottom: 5%;
   right: 5%;
-  background-color: #b2ab0a;
+  background-color: #0b486b;
   z-index: 1;
 }
 #clock_face {
@@ -340,8 +358,8 @@ ul.courses_list {
   position: absolute;
   margin: auto;
   text-align: center;
-  background-color: #ccc415;
   color: #222222;
+  background-color: #3b8686;
 }
 #hour_hand {
   position: absolute;
@@ -372,12 +390,6 @@ ul.courses_list {
 
 /* media queries */
 
-/* orientation for mobile */
-@media screen and (orientation: landscape) {
-
-}
-
-
 /* < 768px */
 @media screen and (max-width: 48em) {
   .right_just {
@@ -385,6 +397,9 @@ ul.courses_list {
   }
   #analog_clock {
     display: none;
+  }
+  .selection {
+    font-size: 1.1em;
   }
 }
 
