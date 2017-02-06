@@ -44,6 +44,10 @@ body {
   box-shadow: lightgrey 0px 0px 7px 7px;
 }
 
+.pure-g {
+  width: 100%;
+}
+
 
 /* general formatting */
 
@@ -103,12 +107,6 @@ h2 {
 }
 h2 a {
   font-size: 1.2em;
-  color: #3b8686;
-  text-decoration: none;
-}
-h2 a:hover {
-  color: #79bd9a;
-  text-shadow: -1px -1px #a8dba8;
 }
 
 h3 {
@@ -134,6 +132,14 @@ h3 {
 }
 .tab {
   text-indent: 1em;
+}
+.link a {
+  color: #3b8686;
+  text-decoration: none;  
+}
+.link a:hover {
+  color: #79bd9a;
+  text-shadow: -1px -1px #a8dba8;
 }
 
 
@@ -255,7 +261,6 @@ ul.courses_list {
 
 .cont_main_body {
   padding-top: 8em;
-  padding-left: 2.5em;
   padding-bottom: 4em;
 }
 h2.tab {
@@ -274,7 +279,6 @@ h2.tab {
 
 .menu_main_body {
   padding-top: 8em;
-  padding-left: 2.5em;
   padding-bottom: 4em;
 }
 
@@ -427,7 +431,7 @@ h2.tab {
 /* < 400px */
 @media screen and (max-width: 25em) {
   h1 {
-    font-size: 1.2em;
+    font-size: 1.8em;
   }
   .res_main_body {
     padding-top: 2em;

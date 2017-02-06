@@ -33,12 +33,12 @@ function initialize_me()
     windowWidth = $(window).width();
     windowHeight = $(window).height();
 
-    //to set the correct link for my email, so it doesn't go off the page at smaller screen sizes
+    //to set the correct link for my email link, so it doesn't go off the page at smaller screen sizes
     if (document.getElementById("email_link")) { //only for contact page
         var text = document.getElementById("email_link");
         var alt_text = document.getElementById("email_link_alt");
 
-        if (windowWidth < 526) {
+        if (windowWidth < 465) {
             text.style.display = "none";
             alt_text.style.display = "block";
         } else {
