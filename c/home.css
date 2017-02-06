@@ -3,17 +3,17 @@
 /*
 
   Colour Scheme: Triad
-  primary: #01b1ff (light blue)
-  secondary: #ff1a3d (red)
-  tertiary: #ccc415 (yellow)
+  primary: #79bd9a (light blue)
+  secondary: red (red)
+  tertiary: #cff09e (yellow)
 
   alternates
-  #1381b2 (darker blue)
-  #b2ab0a (darker yellow)
+  #3b8686 (darker blue)
+  #a8dba8 (darker yellow)
 
   others
   lightgrey for text colour
-  #222222 dark background colour
+  #0b486b dark background colour
 
 */
 
@@ -99,7 +99,7 @@ h1 a {
 }
 
 h1 a:hover span {
-  color: #ff1a3d;
+  color: red;
 }
 
 h1 a:hover span:first-child {
@@ -120,23 +120,23 @@ h1 {
 }
 
 h1 a:hover span {
-  color: #ff1a3d;
+  color: red;
 }
 
 .dot {
-  color: #ff1a3d;
+  color: red;
 }
 
 
 .selection {
-  font-size: 1.1em;
+  font-size: 1.75em;
   position: absolute;
-  border: 2px #1381b2 outset;
+  border: 2px #3b8686 outset;
   border-radius: 10px;
   margin: auto;
   letter-spacing: 2px;
   text-align: center;
-  background-color: #01b1ff;
+  background-color: #79bd9a;
   display: none;
 }
 
@@ -147,7 +147,7 @@ h1 a:hover span {
   width: 100%;
   height: 100%;
   text-decoration: none;
-  color: lightgrey;
+  color: #cff09e  ;
 }
 .selection a:link visited {
   color: grey;
@@ -156,7 +156,7 @@ h1 a:hover span {
   border: 2px lightgrey outset;
   border-radius: 10px;
   box-shadow: lightgrey 0 0 16px 10px;
-  background-color: #1381b2;
+  background-color: #3b8686;
   color: lightgrey;
 }
 .selection:active {
@@ -172,7 +172,7 @@ h1 a:hover span {
   border-radius: 10px;
   bottom: 5%;
   right: 5%;
-  background-color: #b2ab0a;
+  background-color: #0b486b;
   z-index: 1;
 }
 #clock_face {
@@ -187,7 +187,7 @@ h1 a:hover span {
   position: absolute;
   margin: auto;
   text-align: center;
-  background-color: #ccc415;
+  background-color: #3b8686;
 }
 #hour_hand {
   position: absolute;
@@ -217,8 +217,8 @@ h1 a:hover span {
 
 /* media queries */
 
-/* make the clock smaler for < 888px */
-@media screen and (max-width: 55.5em) {
+/* make smaller for < 888px or landscape orientation */
+@media screen and (max-width: 55.5em || orientation: landscape) {
   #analog_clock {
     width: 100px;
     height: 100px;
@@ -226,12 +226,18 @@ h1 a:hover span {
   h1 {
     font-size: 4.4em;
   }
+  .selection {
+    font-size: 1.5em;
+  }
 }
 
 /* < 568px */
 @media screen and (max-width: 35.5em) {
   h1 {
     font-size: 3.3em;
+  }
+  .selection {
+    font-size: 1.1em;
   }
 }
 

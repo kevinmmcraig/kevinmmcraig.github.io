@@ -141,7 +141,7 @@ function calc_sel_pos(divdim, sel_points_x, sel_points_y, scaling_factor)
         }
         $(seltxt).width = selwidth;
 
-        selheight = Math.floor(0.07*$("#squareit").height());
+        selheight = Math.floor(0.05*$("#squareit").height());
         if (selheight < 20) {
             selheight = 20;
         }
@@ -153,7 +153,7 @@ function calc_sel_pos(divdim, sel_points_x, sel_points_y, scaling_factor)
         ctr_array[i] = angle_to_index(divdim, i, angle_factor*i, sel_points_y, scaling_factor);
 
         newposition_x =  ((divdim/2.0 + sel_points_x[ctr_array[i]]) - selwidth/2.0);
-        newposition_y =  ((divdim/2.0 - sel_points_y[ctr_array[i]]) - selheight);
+        newposition_y =  ((divdim/2.0 - sel_points_y[ctr_array[i]]) - selheight/2.0);
         $(seltxt).css({"z-index": numberofsel-i, "left": newposition_x + "px", "top": newposition_y + "px",
             "width": selwidth, "height": 1.5*selheight});
 
