@@ -69,17 +69,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateY(-5%);
 }
 
 
 h1 {
   text-align: center;
-  font-weight: 700;
   font-style: italic;
   width: 50%;
 
-  font-size: 4.6em;
+  font-size: 5em;
   line-height: .69em; /* mlib */
 
   /* Safari */
@@ -133,13 +131,9 @@ h1 a:hover span {
 .selection {
   font-size: 1.1em;
   position: absolute;
-  width: 100%;
   border: 2px #1381b2 outset;
   border-radius: 10px;
   margin: auto;
-  min-height: 60px;
-  min-width: 5.56em;
-  line-height: 60px;
   letter-spacing: 2px;
   text-align: center;
   background-color: #01b1ff;
@@ -147,29 +141,33 @@ h1 a:hover span {
 }
 
 .selection a {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
   text-decoration: none;
+  color: lightgrey;
 }
 .selection a:link visited {
-  -webkit-transition: all 2s ease 0;
-  transition: all 1s linear;
+  color: grey;
 }
-.selection a:hover {
+.selection:hover {
   border: 2px lightgrey outset;
   border-radius: 10px;
   box-shadow: lightgrey 0 0 16px 10px;
   background-color: #1381b2;
   color: lightgrey;
 }
-.selection a:active {
+.selection:active {
   color: lightgrey;
 }
 
 
 #analog_clock {
   position: fixed;
-  width: 100px;
-  height: 100px;
+  width: 125px;
+  height: 125px;
   border: 2px lightgrey solid;
   border-radius: 10px;
   bottom: 5%;
@@ -221,43 +219,31 @@ h1 a:hover span {
 
 /* make the clock smaler for < 888px */
 @media screen and (max-width: 55.5em) {
-  #analog_clock
-  {
+  #analog_clock {
     width: 100px;
     height: 100px;
+  }
+  h1 {
+    font-size: 4.4em;
   }
 }
 
 /* < 568px */
 @media screen and (max-width: 35.5em) {
-  .wrapper {
-    transform: translateY(2%);
-  }
   h1 {
-    font-size: 2.9em;
+    font-size: 3.3em;
   }
-/*
-  h1 a > span:first-child {
-    text-align: left;
-  }
-
-  h1 a > span:last-child {
-    text-align: right;
-  }
-*/
 }
 
 /* < 400px */
 @media screen and (max-width: 25em) {
   .wrapper {
-    transform: translateY(10%);
+    transform: translateY(4%);
   }
   h1 {
-    font-size: 1.8em;
+    font-size: 1.9em;
   }
-  #analog_clock
-  {
-
+  #analog_clock {
     width: 75px;
     height: 75px;
   }

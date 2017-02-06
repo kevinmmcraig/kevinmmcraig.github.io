@@ -1,7 +1,7 @@
 
 //declarations of them global variables
 var numberofsel = 4;
-var size = 400;
+var size = 4000;
 var quarter = size/4;
 var half = size/2;
 var threequart = 3*size/4;
@@ -43,8 +43,8 @@ function initialize_me()
     } else {
         sel_divdim = $("#mainer").height();
     }
-    document.getElementById("squareit").style.width = 1 * sel_divdim + "px";
-    document.getElementById("squareit").style.height = 0.98 * sel_divdim + "px";
+    document.getElementById("squareit").style.width = sel_divdim + "px";
+    document.getElementById("squareit").style.height = sel_divdim + "px";
     clock_divdim = $("#analog_clock").width();
 
     //call functions to set up the selection menu
@@ -84,7 +84,7 @@ function calc_circ(divdim, points_x, points_y, scaling_factor)
 
         temp -= i*incr*i*incr;
         if (temp <= 0) {
-            points_y[i] = 0;
+            points_y[i] = 0.0;
         } else {
             points_y[i] = Math.sqrt( temp );
         }
@@ -95,19 +95,19 @@ function calc_circ(divdim, points_x, points_y, scaling_factor)
 
         temp -= ((points_x[i])*(points_x[i]));
         if (temp <= 0) {
-            points_y[i] = 0;
+            points_y[i] = 0.0;
         } else {
             points_y[i] = (-1.0)*Math.sqrt( temp );
         }
     }
-    points_x[half] = 0;
+    points_x[half] = 0.0;
     points_y[half] = divdim/(-4.0);
 
     for (i = half + 1; i < size; i++) {
         points_x[i] = (-1.0)*points_x[size-i];
         points_y[i] = points_y[size-i];
     }
-    points_x[0] = 0;
+    points_x[0] = 0.0;
     points_x[quarter] = divdim/4.0;
     points_x[threequart] = divdim/(-4.0);
     points_y[0] = divdim/4.0;
@@ -119,7 +119,7 @@ function calc_circ(divdim, points_x, points_y, scaling_factor)
 //calculates initial position of each selection
 function calc_sel_pos(divdim, sel_points_x, sel_points_y, scaling_factor)
 {
-    var angle_factor = 360/numberofsel;
+    var angle_factor = 360.0/numberofsel;
     var newposition_x, newposition_y;
 
     var selwidth, selheight, seltxt, num;
@@ -128,28 +128,41 @@ function calc_sel_pos(divdim, sel_points_x, sel_points_y, scaling_factor)
     for(i = 0; i < numberofsel; i++) {
         seltxt = "#selection" + i;
 
-        if (i < sel_txt_array.length) {
-            num = i;
-        } else {
-            num = sel_txt_array.length - 1;
-        }
         //make each selection an HTML element
         $("<div></div>").attr("id","selection" + i).addClass("selection").appendTo("#squareit");
 
-
-        selwidth = Math.floor(0.2*$("#squareit").innerWidth());
-        selheight = Math.floor(0.15*$("#squareit").innerHeight());
+        //calculate where to put the selection in the div
+        selwidth = Math.floor(0.25*$("#squareit").width());
+        if (selwidth < 90) {
+            selwidth = 90;
+        }
+        if (selwidth > 200) {
+            selwidth = 200;
+        }
         $(seltxt).width = selwidth;
+
+        selheight = Math.floor(0.07*$("#squareit").height());
+        if (selheight < 20) {
+            selheight = 20;
+        }
+        if (selheight > 100) {
+            selheight = 100;
+        }
         $(seltxt).height = selheight;
 
         ctr_array[i] = angle_to_index(divdim, i, angle_factor*i, sel_points_y, scaling_factor);
 
         newposition_x =  ((divdim/2.0 + sel_points_x[ctr_array[i]]) - selwidth/2.0);
-        newposition_y =  ((divdim/2.0 - sel_points_y[ctr_array[i]]) - selheight/2.0);
+        newposition_y =  ((divdim/2.0 - sel_points_y[ctr_array[i]]) - selheight);
         $(seltxt).css({"z-index": numberofsel-i, "left": newposition_x + "px", "top": newposition_y + "px",
-            "width": selwidth});
+            "width": selwidth, "height": 1.5*selheight});
 
-        //make a link in each selection
+        //make a link in each selection with the global arrays
+        if (i < sel_txt_array.length) {
+            num = i;
+        } else {
+            num = sel_txt_array.length - 1;
+        }
         $("<a></a>").attr("href", sel_link_array[num]).text(sel_txt_array[num]).appendTo(seltxt);
     }
 }
@@ -171,10 +184,10 @@ function display_sels(num)
 {
     if (num < numberofsel) {
         if (num == 0) {
-            $("#selection" + num).css("z-index", "2").fadeIn(600);
+            $("#selection" + num).css("display", "block").fadeIn(600);
             setT_sel = setTimeout(function(){display_sels(num + 1)}, 500);
         } else {
-            $("#selection" + num).css("z-index", num%2).fadeIn(300);
+            $("#selection" + num).css("display", "block").fadeIn(300);
             setT_sel = setTimeout(function(){display_sels(num + 1)}, 400);
         }
     }
@@ -230,26 +243,9 @@ function angle_to_index(divdim, index, angle, points_y, scaling_factor)
     var ctr, value_y, radians; //need to convert angle to rads
     divdim = divdim*scaling_factor;
 
-    if (angle == 0) {
-        ctr = 0;
-        return ctr;
-    }
-    if (angle == 90) {
-        ctr = quarter;
-        return ctr;
-    }
-    if (angle == 180) {
-        ctr = half;
-        return ctr;
-    }
-    if (angle == 270) {
-        ctr = threequart;
-        return ctr;
-    }
+    if (angle < 90.0) { //quadrant 1
 
-    if (angle < 90) { //quadrant 1
-
-        radians = (90 - angle)*Math.PI/180.0;
+        radians = (90.0 - angle)*Math.PI/180.0;
         value_y = divdim*Math.sin(radians)/4.0;
         ctr = quarter+1;
         while (value_y > points_y[ctr]) {
@@ -257,9 +253,9 @@ function angle_to_index(divdim, index, angle, points_y, scaling_factor)
         }
         return ctr;
     } else {
-        if (angle < 180) { //quadrant 2
+        if (angle < 180.0) { //quadrant 2
 
-            radians = (angle - 90)*Math.PI/180.0;
+            radians = (angle - 90.0)*Math.PI/180.0;
             value_y = divdim*Math.sin(radians)/(-4.0);
             ctr = quarter+1;
             while (value_y < points_y[ctr]) {
@@ -268,9 +264,9 @@ function angle_to_index(divdim, index, angle, points_y, scaling_factor)
             return ctr;
         } else {
             //quadrant 3 or 4, so to preserve symmetry, do nothing here
-            if (angle < 270) { //quadrant 3
+            if (angle < 270.0) { //quadrant 3
 
-                radians = (90 - (angle - 180))*Math.PI/180.0;
+                radians = (90.0 - (angle - 180.0))*Math.PI/180.0;
                 value_y = divdim*Math.sin(radians)/(-4.0);
                 ctr = threequart;
                 while (value_y < points_y[ctr]) {
@@ -279,7 +275,7 @@ function angle_to_index(divdim, index, angle, points_y, scaling_factor)
                 return ctr + 1;
             } else { //quadrant 4
 
-                radians = (angle - 270)*Math.PI/180.0;
+                radians = (angle - 270.0)*Math.PI/180.0;
                 value_y = divdim*Math.sin(radians)/4.0;
                 ctr = threequart;
                 while (value_y > points_y[ctr]) {
