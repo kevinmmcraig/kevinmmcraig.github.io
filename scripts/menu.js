@@ -35,7 +35,7 @@ $(document).ready(function() {
 function initialize_me()
 {
     //declarations
-    var sel_divdim, clock_divdim, w_temp, h_temp, hour_temp, size_temp;
+    var sel_divdim, clock_divdim, w_temp, h_temp, hour_temp;
 
     var sel_points_x = [];
     var sel_points_y = [];
@@ -52,21 +52,15 @@ function initialize_me()
     sel_divdim = $("#mainer").width();
 
     //some adjustments to the sel dimensions
-    sel_divdim = 0.5 * sel_divdim;
-
-    //set the div around the selection menu links (making sure window isn't too small)
-    if (windowWidth <= 400) {
-        size_temp = Math.floor(windowWidth/12.0);
-        document.getElementById("squareit").style.width = size_temp + sel_divdim + "px";
-        document.getElementById("squareit").style.height = size_temp + sel_divdim + "px";
-    } else if (windowWidth > 400 && windowWidth <= 568) {
-        size_temp = Math.floor(windowWidth/18.0);
-        document.getElementById("squareit").style.width = size_temp + sel_divdim + "px";
-        document.getElementById("squareit").style.height = size_temp + sel_divdim + "px";
+    if (windowWidth <= 568) {
+        sel_divdim = 0.6 * sel_divdim;
     } else {
-        document.getElementById("squareit").style.width = sel_divdim + "px";
-        document.getElementById("squareit").style.height = sel_divdim + "px";
+        sel_divdim = 0.5 * sel_divdim;        
     }
+
+    //set the div around the selection menu links
+    document.getElementById("squareit").style.width = sel_divdim + "px";
+    document.getElementById("squareit").style.height = sel_divdim + "px";
 
     //call functions to set up the selection menu
     calc_circ(sel_divdim, sel_points_x, sel_points_y, 1.15);
@@ -123,25 +117,31 @@ function calc_sel_pos(divdim, sel_points_x, sel_points_y, scaling_factor)
         //make each selection an HTML element
         $("<div></div>").attr("id","selection" + i).addClass("selection").appendTo("#squareit");
 
+        //calculate the sizes of each selection in the div
+        if (windowWidth <= 568) {
+            selwidth = 70;
+            selheight = 25;
+        } else {
+            selwidth = Math.floor(0.25*$("#squareit").width());
+            if (selwidth < 110) {
+                selwidth = 110;
+            }
+            if (selwidth > 200) {
+                selwidth = 200;
+            }
+            $(seltxt).width = selwidth;
+
+            selheight = Math.floor(0.05*$("#squareit").height());
+            if (selheight < 40) {
+                selheight = 40;
+            }
+            if (selheight > 100) {
+                selheight = 100;
+            }
+            $(seltxt).height = selheight;
+        }
+
         //calculate where to put the selection in the div
-        selwidth = Math.floor(0.25*$("#squareit").width());
-        if (selwidth < 110) {
-            selwidth = 110;
-        }
-        if (selwidth > 200) {
-            selwidth = 200;
-        }
-        $(seltxt).width = selwidth;
-
-        selheight = Math.floor(0.05*$("#squareit").height());
-        if (selheight < 40) {
-            selheight = 40;
-        }
-        if (selheight > 100) {
-            selheight = 100;
-        }
-        $(seltxt).height = selheight;
-
         ctr_array[i] = angle_to_index(divdim, i, angle_factor*i, sel_points_y, scaling_factor);
 
         newposition_x =  ((divdim/2.0 + sel_points_x[ctr_array[i]]) - selwidth/2.0);

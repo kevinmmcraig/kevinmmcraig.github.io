@@ -13,7 +13,6 @@
   others
   lightgrey for text colour
   #222222 dark background colour
-  red for accent
 
 */
 
@@ -122,7 +121,7 @@ h3 {
 /* general classes to be used anywhere */
 
 .dot {
-  color: #0b486b;
+  color: #3b8686;
 }
 .bold {
   font-size: 120%;
@@ -400,6 +399,9 @@ h2.tab {
   }
   .selection {
     font-size: 1.1em;
+  }
+  .expand_button {
+    width: 2.5em;
   }
 }
 

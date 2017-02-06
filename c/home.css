@@ -12,7 +12,6 @@
   others
   lightgrey for text colour
   #222222 dark background colour
-  #0b486b for accent
 
 */
 
@@ -124,7 +123,7 @@ h1 a:hover span {
 }
 
 .dot {
-  color: #0b486b;
+  color: #3b8686;
 }
 
 

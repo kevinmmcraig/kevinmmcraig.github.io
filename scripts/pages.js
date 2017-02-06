@@ -1,6 +1,6 @@
 
 //declarations of them global variables
-var size = 400;
+var size = 30000;
 var quarter = size/4;
 var half = size/2;
 var threequart = 3*size/4;

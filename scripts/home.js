@@ -1,7 +1,7 @@
 
 //declarations of them global variables
 var numberofsel = 4;
-var size = 4000;
+var size = 60000;
 var quarter = size/4;
 var half = size/2;
 var threequart = 3*size/4;
