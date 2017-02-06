@@ -217,8 +217,8 @@ h1 a:hover span {
 
 /* media queries */
 
-/* make smaller for < 888px or landscape orientation */
-@media screen and (max-width: 55.5em || orientation: landscape) {
+/* make smaller for < 888px */
+@media screen and (max-width: 55.5em) {
   #analog_clock {
     width: 100px;
     height: 100px;
@@ -252,5 +252,19 @@ h1 a:hover span {
   #analog_clock {
     width: 75px;
     height: 75px;
+  }
+}
+
+/* for hanheld devices */
+@media handheld and (orientation: landscape) {
+  #analog_clock {
+    width: 100px;
+    height: 100px;
+  }
+  h1 {
+    font-size: 3.3em;
+  }
+  .selection {
+    font-size: 1.1em;
   }
 }
