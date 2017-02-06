@@ -391,17 +391,17 @@ h2.tab {
 
 /* < 768px */
 @media screen and (max-width: 48em) {
+  .expand_button {
+    width: 2.5em;
+  }
   .right_just {
     text-align: left;
-  }
-  #analog_clock {
-    display: none;
   }
   .selection {
     font-size: 1.1em;
   }
-  .expand_button {
-    width: 2.5em;
+  #analog_clock {
+    display: none;
   }
 }
 
@@ -410,14 +410,14 @@ h2.tab {
   h1 {
     font-size: 2.5em;
   }
-  .photo_banner {
-    margin-top: -1.5em;
-  }
   .res_main_body {
     padding-top: 5em;
   }
   .resume_pdf {
     transform: translateY(-75%);
+  }
+  .photo_banner {
+    margin-top: -1.5em;
   }
   #new_sel_num {
     width: 2em;
@@ -429,16 +429,16 @@ h2.tab {
   h1 {
     font-size: 1.2em;
   }
-  .photo_banner {
-    margin-top: -5.5em;
-  }
   .res_main_body {
-    padding-top: 2em;
-  }
-  .pure-u-2-3 {
     padding-top: 2em;
   }
   .resume_pdf {
     transform: translateY(-25%);
+  }
+  .photo_banner {
+    margin-top: -5.5em;
+  }
+  .about_main_body {
+    padding-top: 2em;
   }
 }
