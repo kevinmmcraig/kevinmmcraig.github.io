@@ -133,8 +133,8 @@ function calc_sel_pos(divdim, sel_points_x, sel_points_y, scaling_factor)
 
         //calculate where to put the selection in the div
         selwidth = Math.floor(0.25*$("#squareit").width());
-        if (selwidth < 90) {
-            selwidth = 90;
+        if (selwidth < 100) {
+            selwidth = 100;
         }
         if (selwidth > 200) {
             selwidth = 200;
@@ -142,8 +142,8 @@ function calc_sel_pos(divdim, sel_points_x, sel_points_y, scaling_factor)
         $(seltxt).width = selwidth;
 
         selheight = Math.floor(0.05*$("#squareit").height());
-        if (selheight < 20) {
-            selheight = 20;
+        if (selheight < 25) {
+            selheight = 25;
         }
         if (selheight > 100) {
             selheight = 100;

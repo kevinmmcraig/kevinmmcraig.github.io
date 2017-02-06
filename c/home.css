@@ -217,7 +217,7 @@ h1 a:hover span {
 
 /* media queries */
 
-/* make smaller for < 888px */
+/* width < 888px */
 @media screen and (max-width: 55.5em) {
   #analog_clock {
     width: 100px;
@@ -231,7 +231,7 @@ h1 a:hover span {
   }
 }
 
-/* < 568px */
+/* width < 568px */
 @media screen and (max-width: 35.5em) {
   h1 {
     font-size: 3.3em;
@@ -241,7 +241,7 @@ h1 a:hover span {
   }
 }
 
-/* < 400px */
+/* width < 400px */
 @media screen and (max-width: 25em) {
   .wrapper {
     transform: translateY(4%);
@@ -255,16 +255,26 @@ h1 a:hover span {
   }
 }
 
-/* for hanheld devices */
-@media handheld and (orientation: landscape) {
+/* height < 568px */
+@media screen and (max-height: 35.5em) {
   #analog_clock {
     width: 100px;
     height: 100px;
   }
   h1 {
-    font-size: 3.3em;
+    font-size: 3em;
   }
   .selection {
-    font-size: 1.1em;
+    font-size: 1.4em;
+  }
+}
+
+/* height < 400px */
+@media screen and (max-height: 25em) {
+  h1 {
+    font-size: 2em;
+  }
+  .selection {
+    font-size: 1em;
   }
 }
