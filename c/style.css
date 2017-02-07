@@ -67,13 +67,10 @@ h1 {
 
   /* Safari */
   -webkit-transform: rotate(45deg);
-
   /* Firefox */
   -moz-transform: rotate(45deg);
-
   /* IE */
   -ms-transform: rotate(45deg);
-
   /* Opera */
   -o-transform: rotate(45deg);
 }
@@ -159,8 +156,6 @@ h3 {
   border: 1px lightgrey dotted;
 }
 .heading h2 {
-  padding: 0;
-  font-weight: 150;
   font-size: 2.5em;
 }
 
@@ -252,6 +247,7 @@ ul.courses_list {
   padding-top: 8em;
 }
 .about_main_body {
+  letter-spacing: 1px;
   padding-top: 1em;
   padding-bottom: 2.5em;
 }
@@ -260,6 +256,7 @@ ul.courses_list {
 /* deals exclusively with contact page */
 
 .cont_main_body {
+  letter-spacing: 1px;
   padding-top: 8em;
   padding-bottom: 4em;
 }
@@ -278,6 +275,7 @@ h2.tab {
 /* deals exclusively with menu page */
 
 .menu_main_body {
+  letter-spacing: 1px;
   padding-top: 8em;
   padding-bottom: 4em;
 }
@@ -439,10 +437,20 @@ h2.tab {
   .resume_pdf {
     transform: translateY(-25%);
   }
+  .heading h2 {
+    font-size: 2.25em;
+    line-height: 1.25em;
+  }
   .photo_banner {
-    margin-top: -5.5em;
+    margin-top: -3.75em;
   }
   .about_main_body {
     padding-top: 2em;
+  }
+  .cont_main_body {
+    padding-top: 6em;
+  }
+  .menu_main_body {
+    padding-top: 6em;
   }
 }

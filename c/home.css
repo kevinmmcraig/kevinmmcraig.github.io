@@ -74,19 +74,15 @@ h1 {
   text-align: center;
   font-style: italic;
   width: 50%;
-
+  color: lightgrey;
   font-size: 5em;
   line-height: .69em; /* mlib */
-
   /* Safari */
   -webkit-transform: rotate(45deg);
-
   /* Firefox */
   -moz-transform: rotate(45deg);
-
   /* IE */
   -ms-transform: rotate(45deg);
-
   /* Opera */
   -o-transform: rotate(45deg);
 }
@@ -224,7 +220,7 @@ h1 a:hover span {
     height: 100px;
   }
   h1 {
-    font-size: 4.4em;
+    font-size: 4.5em;
   }
   .selection {
     font-size: 1.5em;
@@ -234,7 +230,7 @@ h1 a:hover span {
 /* width < 568px */
 @media screen and (max-width: 35.5em) {
   h1 {
-    font-size: 3.3em;
+    font-size: 3.25em;
   }
   .selection {
     font-size: 1.1em;
@@ -247,7 +243,7 @@ h1 a:hover span {
     transform: translateY(4%);
   }
   h1 {
-    font-size: 1.9em;
+    font-size: 1.75em;
   }
   #analog_clock {
     width: 75px;
@@ -262,7 +258,7 @@ h1 a:hover span {
     height: 100px;
   }
   h1 {
-    font-size: 3em;
+    font-size: 2.5em;
   }
   .selection {
     font-size: 1.4em;
@@ -272,7 +268,7 @@ h1 a:hover span {
 /* height < 400px */
 @media screen and (max-height: 25em) {
   h1 {
-    font-size: 2em;
+    font-size: 1.75em;
   }
   .selection {
     font-size: 1em;
