@@ -52,10 +52,10 @@ function initialize_me()
     sel_divdim = $("#mainer").width();
 
     //some adjustments to the sel dimensions
-    if (windowWidth <= 568) {
-        sel_divdim = 0.6 * sel_divdim;
+    if (windowWidth <= 768) { //or 48em
+        sel_divdim = 0.5 * sel_divdim;
     } else {
-        sel_divdim = 0.5 * sel_divdim;        
+        sel_divdim = 0.4 * sel_divdim;        
     }
 
     //set the div around the selection menu links
@@ -118,27 +118,32 @@ function calc_sel_pos(divdim, sel_points_x, sel_points_y, scaling_factor)
         $("<div></div>").attr("id","selection" + i).addClass("selection").appendTo("#squareit");
 
         //calculate the sizes of each selection in the div
-        if (windowWidth <= 568) {
+        if (windowWidth <= 568) { //or 35.5em
             selwidth = 70;
             selheight = 25;
         } else {
-            selwidth = Math.floor(0.25*$("#squareit").width());
-            if (selwidth < 110) {
-                selwidth = 110;
-            }
-            if (selwidth > 200) {
-                selwidth = 200;
-            }
-            $(seltxt).width = selwidth;
+            if (windowWidth <= 768) { // or 48em
+                selwidth = 100;
+                selheight = 35;
+            } else {
+                selwidth = Math.floor(0.25*$("#squareit").width());
+                if (selwidth < 110) {
+                    selwidth = 110;
+                }
+                if (selwidth > 200) {
+                    selwidth = 200;
+                }
+                $(seltxt).width = selwidth;
 
-            selheight = Math.floor(0.05*$("#squareit").height());
-            if (selheight < 40) {
-                selheight = 40;
+                selheight = Math.floor(0.05*$("#squareit").height());
+                if (selheight < 40) {
+                    selheight = 40;
+                }
+                if (selheight > 100) {
+                    selheight = 100;
+                }
+                $(seltxt).height = selheight;
             }
-            if (selheight > 100) {
-                selheight = 100;
-            }
-            $(seltxt).height = selheight;
         }
 
         //calculate where to put the selection in the div

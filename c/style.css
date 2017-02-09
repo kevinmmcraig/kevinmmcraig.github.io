@@ -53,14 +53,14 @@ body {
 
 .wrapper {
   position: absolute;
-  transform: translate(7%, -25%);
-  z-index: 1;
+  width: 5em;
+  transform: translate(50%, -25%);
 }
 
 h1 {
   text-align: left;
   font-style: italic;
-  width: 5%;
+  width: 10%;
   color: lightgrey;
   font-size: 3em;
   line-height: .69em; /* mlib */
@@ -131,23 +131,37 @@ h3 {
   text-indent: 1em;
 }
 .link a {
-  color: #3b8686;
+  color: #cff09e;
   text-decoration: none;  
 }
 .link a:hover {
-  color: #79bd9a;
-  text-shadow: -1px -1px #a8dba8;
+  color: #a8dba8;
+  text-shadow: -1px -1px #79bd9a;
 }
 
 
 /* deals exclusively with resume page */
 
 .res_main_body {
-  padding-top: 7em;
+  padding-top: 9em;
   padding-left: 2.5em;
 }
 .res_main_body * {
   letter-spacing: 1px;
+}
+.res_main_body p { /* this causes the slideToggle to flow smoothly (no blips) */
+  display: inline-block;
+  margin: -0.1em;
+}
+
+.resume_pdf {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25em;
+  text-align: center;
+  transform: translateY(250%);
 }
 
 .heading {
@@ -159,25 +173,6 @@ h3 {
   font-size: 2.5em;
 }
 
-.resume_pdf {
-  width: 20%;
-  text-align: center;
-  transform: translateY(-150%);
-  z-index: 2;
-}
-.resume_pdf a {
-  color: #cff09e;
-  text-decoration: underline;
-}
-.resume_pdf a:hover {
-  color: #a8dba8;
-}
-
-.content {
-  display: none;
-  width: 100%;
-  padding-top: 0em;
-}
 .expand_button {
   float: left;
   transform: translate(-50%, 50%);
@@ -194,14 +189,23 @@ h3 {
   background-color: #3b8686;
   border: 2px lightgrey outset;
 }
+
+.content {
+  display: none;
+  width: 100%;
+  padding-bottom: 1em;
+}
+.inner_heading {
+  padding-top: 1.9em;
+}
 .right_just {
   position: relative;
+  padding-top: 1.9em; /* must equal the padding from inner heading class */
 }
 
 ul.dash {
   list-style: none;
   padding-left: 1em;
-  padding-bottom: 1.5em;
 }
 ul.dash li {
   padding: 0.75em;
@@ -230,7 +234,11 @@ ul.dash > li:before {
 
 ul.courses_list {
   padding-top: 0.75em;
-  margin-bottom: -2em;
+}
+
+.references_heading {
+  position: relative;
+  padding-top: 1.5em;
 }
 
 #first_bullet_point {
@@ -244,7 +252,7 @@ ul.courses_list {
 /* deals exclusively with about page */
 
 .photo_banner {
-  padding-top: 8em;
+  padding-top: 8.25em;
 }
 .about_main_body {
   letter-spacing: 1px;
@@ -391,6 +399,19 @@ h2.tab {
 
 /* media queries */
 
+/* < 1024px */
+@media screen and (max-width: 64em) {
+  h1 {
+    font-size: 2.75em;
+  }
+  .resume_pdf {
+    transform: translateY(125%);
+  }
+  .photo_banner {
+    padding-top: 7.4em;
+  }
+}
+
 /* < 768px */
 @media screen and (max-width: 48em) {
   .expand_button {
@@ -398,6 +419,7 @@ h2.tab {
   }
   .right_just {
     text-align: left;
+    margin-top: -1.9em; /* must be equal and negative to the padding from inner heading class */
   }
   .selection {
     font-size: 1.1em;
@@ -409,17 +431,21 @@ h2.tab {
 
 /* < 568px */
 @media screen and (max-width: 35.5em) {
+  .wrapper {
+    transform: translate(42%, -25%);
+  }
   h1 {
     font-size: 2.4em;
   }
   .res_main_body {
-    padding-top: 5em;
+    padding-top: 7.5em;
   }
   .resume_pdf {
-    transform: translateY(-75%);
+    font-size: 1em;
+    transform: translateY(100%);
   }
   .photo_banner {
-    margin-top: -1.85em;
+    padding-top: 6.25em;
   }
   #new_sel_num {
     width: 2em;
@@ -428,21 +454,24 @@ h2.tab {
 
 /* < 400px */
 @media screen and (max-width: 25em) {
+  .wrapper {
+    transform: translate(31%, -25%);
+  }
   h1 {
     font-size: 1.8em;
   }
   .res_main_body {
-    padding-top: 2em;
+    padding-top: 5em;
   }
   .resume_pdf {
-    transform: translateY(-25%);
+    transform: translateY(50%);
   }
   .heading h2 {
-    font-size: 2.25em;
-    line-height: 1.25em;
+    font-size: 2.1em;
+    line-height: 1.5em;
   }
   .photo_banner {
-    margin-top: -3.75em;
+    padding-top: 4.3em;
   }
   .about_main_body {
     padding-top: 2em;

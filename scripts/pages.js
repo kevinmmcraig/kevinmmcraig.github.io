@@ -38,7 +38,7 @@ function initialize_me()
         var text = document.getElementById("email_link");
         var alt_text = document.getElementById("email_link_alt");
 
-        if (windowWidth < 465) {
+        if (windowWidth < 464) {//or 29em
             text.style.display = "none";
             alt_text.style.display = "block";
         } else {

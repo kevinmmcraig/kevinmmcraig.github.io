@@ -7,22 +7,15 @@ var windowWidth, width_temp, windowHeight, height_temp;
 $(document).ready(function(){
 
     //have the content slide up and down
-    $("#toggleContent1").click(function() {
-        $("#content1").slideToggle(speed="slow");
-    });
-    $("#toggleContent2").click(function() {
-        $("#content2").slideToggle(speed="slow");
-    });
-    $("#toggleContent3").click(function() {
-        $("#content3").slideToggle(speed="slow");
-    });
-    $("#toggleContent4").click(function() {
-        $("#content4").slideToggle(speed="slow");
-    });
-    $("#toggleContent5").click(function() {
-        $("#content5").slideToggle(speed="slow");
-    });
+    $(".res_main_body").on("click", "[rel=toggleContent]", function() {
+        var speed_var;
+        var content_var = $(this).parents(".heading").next(".content");
 
+        //this creates a more proportional speed for varying heights of the content divs
+        //(mainly the core competencies was too slow and the work experience too fast)
+        speed_var = 50.0*Math.sqrt(content_var.height());
+        content_var.slideToggle(speed=speed_var);
+    });
     //get dimensions of window viewport
     windowWidth = $(window).width();
     windowHeight = $(window).height();
@@ -39,7 +32,7 @@ function set_first_bullet(width)
     var text = document.getElementById("first_bullet_point");
     var alt_text = document.getElementById("first_bullet_point_alt");
 
-    if (width < 768) {
+    if (width < 768) { //or 48em
         text.style.display = "none";
         alt_text.style.display = "block";
     } else {
@@ -59,7 +52,7 @@ function check_if_window_resized()
         set_first_bullet(width_temp);
     }
 
-    setTimeout(function(){check_if_window_resized()},100);
+    setTimeout(function(){check_if_window_resized()},250);
 }
 
 
