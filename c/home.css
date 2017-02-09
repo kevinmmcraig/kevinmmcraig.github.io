@@ -94,7 +94,7 @@ h1 a {
 
 h1 a:hover span {
   color: #3b8686;
-  text-shadow: -1px -1px #a8dba8;
+  text-shadow: -3px -1px #0b486b;
 }
 
 h1 a:hover span:first-child {
@@ -112,10 +112,6 @@ a > span {
 
 h1 {
   color: lightgrey;
-}
-
-h1 a:hover span {
-  color: #3b8686;
 }
 
 .dot {

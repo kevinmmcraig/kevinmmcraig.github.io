@@ -79,8 +79,8 @@ h1 a {
   text-decoration: none;
 }
 h1 a:hover span {
-  color: #3b8686;
-  text-shadow: -1px -1px #a8dba8;
+  color: #79bd9a;
+  text-shadow: -3px -1px #0b486b;
 }
 h1 a:hover span:first-child {
   text-decoration: overline;
